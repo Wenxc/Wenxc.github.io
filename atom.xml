@@ -1,31 +1,450 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wenxc.github.io/</id>
-    <title>Gridea</title>
-    <updated>2020-11-09T13:54:49.931Z</updated>
+    <title>Wenxc&apos;s Blog</title>
+    <updated>2020-11-09T14:57:07.794Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wenxc.github.io/"/>
     <link rel="self" href="https://wenxc.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>玻璃晴朗，橘子辉煌</subtitle>
     <logo>https://wenxc.github.io/images/avatar.png</logo>
     <icon>https://wenxc.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, Wenxc&apos;s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[hexo博客使用经验]]></title>
+        <title type="html"><![CDATA[数据结构学习笔记]]></title>
+        <id>https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/</id>
+        <link href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/">
+        </link>
+        <updated>2019-10-03T14:01:58.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="抽象数据类型">抽象数据类型</h3>
+<p>1、抽象数据类型概念</p>
+<p>c语言中数据类型可以分为两类：</p>
+<ul>
+<li>原子类型：不可以再分解的基本类型，例如整型、浮点型、字符型等。</li>
+<li>结构类型:  由若干个类型组合而成，是可以再分解的，例如整型数组是由若干个整型数据组成的。</li>
+</ul>
+<p>抽象是指抽取事物具有的普遍性的本质。对已有的数据类型进行抽象就有了抽象数据类型。</p>
+<!---more--->
+<p>抽象数据类型（abstract  data type, ADT）是指一个数学模型及定义在该模型上的一组操作。“抽象”的意义在于数据类型的数学抽象特性，而且抽象数据类型不仅仅指那些已经定义并实现的数据类型，还可以是计算机编程者在设计软件程序时自己定义的数据类型。</p>
+<p>2、抽象数据类型格式</p>
+<p>标准格式：</p>
+<p>ADT    抽象数据类型名</p>
+<p>data</p>
+<p>​		数据元素之间的逻辑关系</p>
+<p>operation</p>
+<p>​		操作</p>
+<p>endADT</p>
+<p>线性表的抽象数据类型</p>
+<p>ADT 线性表（list）</p>
+<p>data</p>
+<p>​		线性表的数据对象集合{}，每个元素的类型均为DataType。</p>
+<p>operation</p>
+<p>​		InitList（*L）：</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python调用动态链接库DLL学习笔记]]></title>
+        <id>https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/</id>
+        <link href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">
+        </link>
+        <updated>2019-09-09T14:05:51.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="python调用动态链接库dll">Python调用动态链接库DLL</h4>
+<p>动态链接库（DLL，全称Dynamic Link Library）进程之间共享使用的函数库。动态链接库提供了一种方法，是进程可以调用不属于其自身可执行代码的函数。函数的可执行代码位于一个DLL中，当调用DLL中的方法时，进程由原本自身的代码执行到DLL中。DLL有助于程序模块化，减少重复开发。</p>
+<!---more--->
+<h5 id="概述">概述：</h5>
+<p>接触dll之前觉得它很神秘，就像是一个黑盒子，静静地躺在安装的程序的某一个文件夹内，既不能直接运行，也不能接收消息，但离了他们程序往往又无法运行。动态链接库是一些独立的文件，其中包含能被可执行程序或其他dll调用来完成某项工作的函数，只有在其他模块调用dll中的函数时，dll才发挥作用。<br>
+在实际编程中，我们可以把完成某项功能的函数放在一个动态链接库里，然后提供给其他程序调用。像Windows API中所有的函数都包含在dll中，如Kernel32.dll, User32.dll, GDI32.dll等。那么dll究竟有什么好处呢？</p>
+<h5 id="语法">语法：</h5>
+<p>__declspec(dllexport):<br>
+将一个函数声名为导出函数，就是说这个函数要被其他程序调用，即作为DLL的一个对外函数接口。<br>
+通常它和extern    &quot;C&quot;   合用，extern &quot;C&quot;告诉编译器该部分可以在C/C++中使用，形式如下：<br>
+extern &quot;C&quot;<br>
+{</p>
+<p>__declspec(dllexport) RETURN_TYPE FUNCTION()</p>
+<p>}</p>
+<p>__declspec(dllimport) :</p>
+<p>当你需要使用DLL中的函数时，往往不需要显示地导入函数，编译器可自动完成。但如果你显示地导入函数，编译器会产生质量更好的代码。由于编译器确切地知道了一个函数是否在一个DLL中，它就可以产生更好的代码，不再需要间接的调用转接。</p>
+<p>Win32的PE格式（Portable Executable Format）把所有导入地址放在一个导入地址表中。<a href=""></a></p>
+<p>__declspec(dllimport) void func1(void);</p>
+<p>void main(void)<br>
+{<br>
+func1();<br>
+}</p>
+<h5 id="流程">流程：</h5>
+<ul>
+<li>
+<p><strong>加载DLL</strong></p>
+<p>根据调用的函数是符合什么调用约定</p>
+<p>stdcall调用约定：两种加载方式</p>
+<pre><code class="language-python">Objdll = ctypes.windll.LoadLibrary(&quot;dllpath&quot;)
+Objdll = ctypes.WinDLL(&quot;dllpath&quot;) 
+</code></pre>
+<p>cdecl调用约定：也有两种加载方式</p>
+<pre><code class="language-python">Objdll = ctypes.cdll.LoadLibrary(&quot;dllpath&quot;)
+Objdll = ctypes.CDLL(&quot;dllpath&quot;)
+</code></pre>
+<p>windll和cdll分别是WinDLL类和CDll类的对象</p>
+</li>
+<li>
+<p><strong>调用DLL中的函数</strong></p>
+<p>在前面加载dll的时候会返回一个DLL对象（假设名字叫Objdll），利用该对象就可以调用dll中的方法。<br>
+e.g. 如果dll中有个方法名字叫Add（注意如果经过stdcall声明的方法，如果不是用def文件声明的导出函数或者extern “C” 声明的话，编译器会对函数名进行修改，这个要注意。）<br>
+调用：nRet = Objdll.Add(12, 15) 即完成一次调用。</p>
+<p>看起来调用似乎很简单，这是因为Add这个函数太简单了，现在假设函数需要你传入一个int类型的指针（int*），可以通过库中的byref关键字来实现，假设现在调用的函数的第三个参数是个int类型的指针。</p>
+<pre><code class="language-python">intPara = c_int(9)
+dll.sub(23, 102, byref(intPara))
+print intPara.value
+</code></pre>
+<p>如果是要传入一个char缓冲区指针，和缓冲区长度，方法至少有四种：</p>
+<pre><code class="language-python"># 方法1
+szPara = create_string_buffer('/0'*100)
+dll.PrintInfo(byref(szPara), 100);
+print szPara.value
+ 
+# 方法2
+sBuf = 'aaaaaaaaaabbbbbbbbbbbbbb'
+pStr = c_char_p( )
+pStr.value = sBuf
+#pVoid = ctypes.cast( pStr, ctypes.c_void_p ).value
+dll.PrintInfo(pStr, len(pStr.value))
+print pStr.value
+ 
+# 方法3
+strMa = &quot;/0&quot;*20
+FunPrint  = dll.PrintInfo
+FunPrint.argtypes = [c_char_p, c_int]
+#FunPrint.restypes = c_void_p
+nRst = FunPrint(strMa, len(strMa))
+print strMa,len(strMa)
+ 
+# 方法4
+pStr2 = c_char_p(&quot;/0&quot;)
+print pStr2.value
+#pVoid = ctypes.cast( pStr, ctypes.c_void_p ).value
+dll.PrintInfo(pStr2, len(pStr.value))
+print pStr2.value
+</code></pre>
+</li>
+<li>
+<p><strong>C基本类型和ctypes中实现的类型映射表</strong></p>
+<p>ctypes数据类型          C数据类型<br>
+c_char                          char<br>
+c_short                         short<br>
+c_int                             int<br>
+c_long                          long<br>
+c_ulong                        unsign long<br>
+c_float                          float<br>
+c_double                      double<br>
+c_void_p                       void<br>
+对应的指针类型是在后面加上&quot;_p&quot;，如int*是c_int_p等等。<br>
+在python中要实现c语言中的结构，需要用到类。</p>
+</li>
+<li>
+<p><strong>DLL中的函数返回一个指针</strong></p>
+<p>虽然这不是一个常用的方法，不过这种情况的处理方法也很简单，其实返回的都是地址，把他们转换相应的python类型，再通过value属性访问。</p>
+<pre><code class="language-python">pchar = dll.getbuffer()
+szbuffer = c_char_p(pchar)
+print szbuffer.value
+</code></pre>
+</li>
+<li>
+<p><strong>处理C中的结构体类型</strong></p>
+<p>这是最麻烦也是最复杂的一种调用，在python里面申明一个类似c的结构体，要用到类，并且这个类必须继承自Structure。<br>
+先看一个简单的例子：<br>
+C里面dll的定义如下：</p>
+<pre><code class="language-c">typedef struct _SimpleStruct
+{
+    int    nNo;
+    float  fVirus;
+    char   szBuffer[512];
+} SimpleStruct, *PSimpleStruct;
+typedef const SimpleStruct*  PCSimpleStruct;
+ 
+extern &quot;C&quot;int  __declspec(dllexport) PrintStruct(PSimpleStruct simp);
+int PrintStruct(PSimpleStruct simp)
+{
+    printf (&quot;nMaxNum=%f, szContent=%s&quot;, simp-&gt;fVirus, simp-&gt;szBuffer);
+return simp-&gt;nNo;
+}
+</code></pre>
+<p>python中的定义：</p>
+<pre><code class="language-python">from ctypes import *
+class SimpStruct(Structure):
+    _fields_ = [ (&quot;nNo&quot;, c_int),
+              (&quot;fVirus&quot;, c_float),
+              (&quot;szBuffer&quot;, c_char * 512)]
+ 
+dll = CDLL(&quot;AddDll.dll&quot;)
+simple = SimpStruct();
+simple.nNo = 16
+simple.fVirus = 3.1415926
+simple.szBuffer = &quot;magicTong/0&quot;
+print dll.PrintStruct(byref(simple))
+</code></pre>
+<p>上面例子结构体很简单，但是如果结构体里面有指针，甚至是指向结构体的指针，处理起来会复杂很多，不过Python里面也有相应的处理方法，下面这个例子来自网上<br>
+C代码如下：</p>
+<pre><code class="language-c++">typedef struct 
+
+{
+
+char words[10];
+
+}keywords;
+
+ 
+
+typedef struct 
+
+{
+
+keywords *kws;
+
+unsigned int len;
+
+}outStruct;
+
+extern &quot;C&quot; int __declspec(dllexport) test(outStruct *o);
+
+int test(outStruct *o)
+
+{
+
+unsigned int i = 4;
+
+o-&gt;kws = (keywords *)malloc(sizeof(unsigned char) * 10 * i);
+
+strcpy(o-&gt;kws[0].words, &quot;The First Data&quot;);
+
+strcpy(o-&gt;kws[1].words, &quot;The Second Data&quot;);
+
+ 
+
+o-&gt;len = i;
+
+return 1;
+
+}
+</code></pre>
+<p>Python代码如下：</p>
+<pre><code class="language-python">class keywords(Structure):
+ 
+        _fields_ = [('words', c_char *10),]
+ 
+ 
+ 
+class outStruct(Structure):
+ 
+        _fields_ = [('kws', POINTER(keywords)),
+ 
+                    ('len', c_int),]
+ 
+o = outStruct()
+ 
+dll.test(byref(o))
+ 
+ 
+ 
+print o.kws[0].words;
+ 
+print o.kws[1].words;
+ 
+print o.len
+</code></pre>
+</li>
+<li>
+<p>两个例子</p>
+<ul>
+<li>这是一个GUID生成器，其实很多第三方的python库已经有封装好的库可以调用，不过这得装了那个库才行，如果想直接调用一些API，对于python来说，也要借助一个第三方库才行，这个例子比较简单，就是用C++调用win32 API来产生GUID，然后python通过调用C++写的dll来获得这个GUID。<br>
+c++代码如下：</li>
+</ul>
+<pre><code class="language-c++">extern &quot;C&quot;__declspec(dllexport) char* newGUID(); 
+ 
+char* newGUID() 
+ 
+{
+ 
+     static char buf[64] = {0};
+ 
+     statc GUID guid;
+ 
+     if (S_OK == ::CoCreateGuid(&amp;guid)) 
+ 
+     {
+ 
+       _snprintf(buf, sizeof(buf),
+ 
+&quot;%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X&quot;, 
+ 
+guid.Data1,
+ 
+guid.Data2,
+ 
+guid.Data3,
+ 
+guid.Data4[0], guid.Data4[1],
+ 
+guid.Data4[2], guid.Data4[3],
+ 
+guid.Data4[4], guid.Data4[5],
+ 
+guid.Data4[6], guid.Data4[7]
+ 
+); 
+ 
+       ::MessageBox(NULL, buf, &quot;GUID&quot;, MB_OK); 
+ 
+      }
+ 
+     return (char*)buf;
+ 
+}
+
+</code></pre>
+<p>python代码如下：</p>
+<pre><code class="language-python">def CreateGUID():
+ 
+    &quot;&quot;&quot;
+    创建一个全局唯一标识符
+    类似：E06093E2-699A-4BF2-A325-4F1EADB50E18
+    NewVersion
+    &quot;&quot;&quot;
+ 
+    try:
+ 
+        # dll path
+ 
+        strDllPath = sys.path[0] + str(os.sep) + &quot;createguid.dll&quot;
+ 
+        dll = CDLL(strDllPath)
+ 
+        b = dll.newGUID()
+ 
+        a = c_char_p(b)
+ 
+    except Exception, error:
+ 
+        print error
+ 
+        return &quot;&quot;
+ 
+    return a.value
+</code></pre>
+<ul>
+<li>
+<p>这个例子是调用kernel32.dll中的createprocessA函数来启动一个记事本进程</p>
+<pre><code class="language-python">#  -*- coding:utf-8 -*- 
+ 
+from ctypes import * 
+ 
+ 
+ 
+# 定义_PROCESS_INFORMATION结构体
+ 
+class _PROCESS_INFORMATION(Structure):
+ 
+    _fields_ = [('hProcess', c_void_p),
+ 
+                ('hThread', c_void_p),
+ 
+                ('dwProcessId', c_ulong),
+ 
+                ('dwThreadId', c_ulong)]
+ 
+ 
+ 
+# 定义_STARTUPINFO结构体
+ 
+class _STARTUPINFO(Structure):
+ 
+    _fields_ = [('cb',c_ulong),
+ 
+                ('lpReserved', c_char_p),
+ 
+                ('lpDesktop', c_char_p),
+ 
+                ('lpTitle', c_char_p),
+ 
+                ('dwX', c_ulong),
+ 
+                ('dwY', c_ulong),
+ 
+                ('dwXSize', c_ulong),
+ 
+                ('dwYSize', c_ulong),
+ 
+                ('dwXCountChars', c_ulong),
+ 
+                ('dwYCountChars', c_ulong),
+ 
+                ('dwFillAttribute', c_ulong),
+ 
+                ('dwFlags', c_ulong),
+ 
+                ('wShowWindow', c_ushort),
+ 
+                ('cbReserved2', c_ushort),
+ 
+                ('lpReserved2', c_char_p),
+ 
+                ('hStdInput', c_ulong),
+ 
+                ('hStdOutput', c_ulong),
+ 
+                ('hStdError', c_ulong)]
+ 
+ 
+ 
+NORMAL_PRIORITY_CLASS = 0x00000020 #定义NORMAL_PRIORITY_CLASS
+ 
+kernel32 = windll.LoadLibrary(&quot;kernel32.dll&quot;)  #加载kernel32.dll
+ 
+CreateProcess = kernel32.CreateProcessA   #获得CreateProcess函数地址
+ 
+ReadProcessMemory = kernel32.ReadProcessMemory #获得ReadProcessMemory函数地址
+ 
+WriteProcessMemory = kernel32.WriteProcessMemory #获得WriteProcessMemory函数地址
+ 
+TerminateProcess = kernel32.TerminateProcess
+ 
+ 
+ 
+# 声明结构体
+ 
+ProcessInfo = _PROCESS_INFORMATION()
+ 
+StartupInfo = _STARTUPINFO()
+ 
+fileName = 'c:/windows/notepad.exe'       # 要进行修改的文件
+ 
+address = 0x0040103c        # 要修改的内存地址
+ 
+strbuf = c_char_p(&quot;_&quot;)        # 缓冲区地址
+ 
+bytesRead = c_ulong(0)       # 读入的字节数
+ 
+bufferSize =  len(strbuf.value)     # 缓冲区大小
+ 
+ 
+ 
+# 创建进程 
+ 
+CreateProcess(fileName, 0, 0, 0, 0, NORMAL_PRIORITY_CLASS,0, 0, byref(StartupInfo), byref(ProcessInfo))
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hexo博客使用经验]]></title>
         <id>https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/</id>
         <link href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">
         </link>
-        <updated>2020-11-09T13:53:01.000Z</updated>
-        <content type="html"><![CDATA[<hr>
-<p>title: hexo博客使用经验<br>
-date: 2019-08-01 18:04:12<br>
-tags: hexo<br>
-categories: hexo</p>
-<hr>
-<blockquote>
+        <updated>2019-09-03T13:53:01.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
 <p>hexo博客编辑过程中遇到的问题以及解决办法</p>
 </blockquote>
-<hr>
 <!--- more --->
 <h3 id="图片插入">图片插入</h3>
 <blockquote>
@@ -65,6 +484,473 @@ categories: hexo</p>
 将src=“https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js”<br>
 修改为src=“https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js”</p>
 <p>busuanzi就能正常工作.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python第三方库制作]]></title>
+        <id>https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/</id>
+        <link href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/">
+        </link>
+        <updated>2019-08-20T10:25:15.000Z</updated>
+        <content type="html"><![CDATA[<hr>
+<p>title:<br>
+date: 2019-08-08 17:52:28<br>
+tags: python<br>
+categories:</p>
+<hr>
+<blockquote>
+<p>做网格模型操作的python第三方库，还在补充完善。</p>
+</blockquote>
+<!--- more-->
+<h3 id="文件结构">文件结构</h3>
+<pre><code>|--smart
+|  |--static
+|  |  |--icon.svg
+|  |  |--confg.json
+|  |--engine
+|  |  |--__init__.py
+|  |  |--core.py
+|  |--__init__.py
+|  |--__version__.py
+|  |--api.py
+|  |--utils.py
+|--tests
+|  |--__init__.py
+|--LICENSE
+|--README.rst
+|--setup.py 
+</code></pre>
+<p>smart: 作为项目核心代码模块，提供所有的对外接口和实现。其内部可以包含子模块和静态文件<br>
+tests: 包含所有的测试用例<br>
+LICENSE: 编写相关版权信息<br>
+README: 提供项目基本描述和相关使用方法介绍等<br>
+setup.py: 项目的安装配置文件</p>
+<hr>
+<h3 id="setuppy-配置">setup.py 配置</h3>
+<p>setup.py 主要使用setuptools的setup模块，提供打包所需要的基本信息。python依赖此脚本中的配置信息。将相关模块、静态文件，打包成一个完整的模块安装到site-packages文件。</p>
+<p>基本示例：</p>
+<pre><code># 需要将那些包导入
+packages = [&quot;smart&quot;, &quot;smart.engine&quot;]
+
+# 导入静态文件
+file_data = [
+    (&quot;smart/static&quot;, [&quot;smart/static/icon.svg&quot;, &quot;smart/static/config.json&quot;]),
+]
+
+# 第三方依赖
+requires = [
+    &quot;pandas&gt;=0.23.4&quot;
+]
+
+# 自动读取version信息
+about = {}
+with open(os.path.join(here, 'smart', '__version__.py'), 'r', 'utf-8') as f:
+    exec(f.read(), about)
+
+# 自动读取readme
+with open('README.rst', 'r', 'utf-8') as f:
+    readme = f.read()
+
+setup(
+    name=about[&quot;__title__&quot;],  # 包名称
+    version=about[&quot;__version__&quot;],  # 包版本
+    description=about[&quot;__description__&quot;],  # 包详细描述
+    long_description=readme,   # 长描述，通常是readme，打包到PiPy需要
+    author=about[&quot;__author__&quot;],  # 作者名称
+    author_email=about[&quot;__author_email__&quot;],  # 作者邮箱
+    url=about[&quot;__url__&quot;],   # 项目官网
+    packages=packages,    # 项目需要的包
+    data_files=file_data,   # 打包时需要打包的数据文件，如图片，配置文件等
+    include_package_data=True,  # 是否需要导入静态数据文件
+    python_requires=&quot;&gt;=3.0, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3*&quot;,  # Python版本依赖
+    install_requires=requires,  # 第三方库依赖
+    zip_safe=False,  # 此项需要，否则卸载时报windows error
+    classifiers=[    # 程序的所属分类列表
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy'
+    ],
+)
+</code></pre>
+<hr>
+<h3 id="安装">安装</h3>
+<ul>
+<li>
+<p>打包之前，可以先验证setup.py的正确性</p>
+<pre><code>python setup.py check
+</code></pre>
+<p>如果没有任何错误或者警告，则说明您的setup.py是没问题的<br>
+如果没有问题，就可以使用下方的命令正式打包</p>
+<pre><code>python setup.py sdist
+</code></pre>
+<p>打包完成后，会在顶层目录下生产dist和egg两个目录</p>
+</li>
+<li>
+<p>如果您的代码包仅供内部使用，又不想直接发送源码，则可以将代码打包成whl文件<br>
+打包成whl命令</p>
+<pre><code># --wheel-dir: 为打包存储的路径 
+# 空格后为需要打包的工程路径
+pip wheel --wheel-dir=D:\\work\\base_package\\dist D:\\work\\base_package
+</code></pre>
+<p>打包完成后就可以看到<code>smart-0.0.1-py3-none-any.whl</code>文件了，将此文件分享后后，对方就可以使用</p>
+<pre><code>pip install smart-0.0.1-py3-none-any.whl
+</code></pre>
+<p>来安装当前库。</p>
+</li>
+</ul>
+<h3 id="上传">上传</h3>
+<p>如果您希望将代码包放到网络上，供所有人开放下载，可以将代码打包上传至PyPi。<br>
+上传代码之前，需要到官网注册pypi账户。https://pypi.org/</p>
+<ul>
+<li>
+<p>直接上传</p>
+<p>使用<code>register</code>命令是最简单的上传方式，但是使用HTTP并未加密，有可能会泄露密码。</p>
+</li>
+</ul>
+<pre><code>  # 注册包
+  python setup.py register
+  # 上传包
+  python setup.py sdist upload
+</code></pre>
+<ul>
+<li>使用twine上传</li>
+</ul>
+<ol>
+<li>安装twine</li>
+</ol>
+<pre><code>pip install twine
+</code></pre>
+<p>​	2.使用twine注册并上传代码</p>
+<pre><code># 注册包
+twine register dist/smart.whl
+# 上传包
+twine upload dist/*
+</code></pre>
+<h3 id="编写模块">编写模块</h3>
+<h4 id="1-模块是程序">1. 模块是程序</h4>
+<p>模块的本质是一个扩展名为.py的python程序。在使用时直接将函数引用过来，节省精力，不需要写雷同的代码。</p>
+<p>但想把自己的.py文件作为模块import过来，必须先让python解释器能够找到你写的模块。比如，在某一目录下，写了这样一个文件：</p>
+<pre><code class="language-python"># coding=utf-8
+ 
+display = &quot;hello world! &quot;
+</code></pre>
+<p>并把它命名为hw.py|，那么这个文件可以作为一个模块被引入，但得首先告诉python解释器我写了一个这样的文件。</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;&quot;C:\\Users\\wenxc\\Desktop\\hw.py&quot;&quot;)
+</code></pre>
+<p>然后把文件作为模块引入</p>
+<pre><code class="language-python">&gt;&gt;&gt; import hw
+
+&gt;&gt;&gt; hw.display
+
+'helloworld!'
+</code></pre>
+<p>这时可以在源路径下看到python模块文件和 _ pycache _ 文件夹。</p>
+<blockquote>
+<p>在 Python 中，解释器将.py 的文件转化为.pyc 文件，而.pyc 文件是由字节码（bytecode）构成的，然后这个.pyc 文件交给一个叫作 Python 虚拟机的东西去运行（那些号称编译型的语言也是这个流程，不同的是它们先有一个明显的编译过程，编译好了之后再运行）。如果.py 文件修改了，Python 解释器会重新编译，只是这个编译过程不全显示给你看。</p>
+<p>有了.pyc 文件后，每次运行就不需要重新让解释器来编译.py 文件了，除非.py 文件修改了。这样，Python 运行的就是那个编译好了的.pyc 文件。</p>
+</blockquote>
+<p>平时在写有关程序然后执行时常常要用到 if __ name __ == &quot;__ main __&quot;，那时我们直接用&quot;python filename.py&quot;的格式来运行该文件，此时我们也有了同样的,py文件，不过是作为模块引入的。接下来探究一下，同样是.py文件，它怎么知道是被当作程序执行还是被当作模块引入？</p>
+<p>先将hw.py文件改造：</p>
+<pre><code class="language-python"># coding=utf-8
+
+def display():
+
+    return &quot;hello world !&quot;
+
+if __name__ == &quot;__main__&quot;:
+
+    print(display())
+</code></pre>
+<p>沿用之前的做法：</p>
+<pre><code class="language-python">$ python pm.py
+
+hello world !
+</code></pre>
+<p>如果将这个程序作为模块导入，会是这样：</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;C:\\Users\\wenxc\\Desktop\\hw.py&quot;)
+
+&gt;&gt;&gt; import hw
+
+&gt;&gt;&gt; hw.display()
+
+'hello world !'
+</code></pre>
+<p>查看模块的属性和方法可以用dir()</p>
+<pre><code class="language-python">&gt;&gt;&gt; dir(hw)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'display']
+</code></pre>
+<p>同样的一个.py文件，可以把它当作程序来执行，也可以把它当作模块引入</p>
+<pre><code class="language-python">&gt;&gt;&gt; __name__
+'__main__'
+&gt;&gt;&gt; hw.__name__
+'hw'
+
+</code></pre>
+<p>如果要作为程序执行则 __ name__ == &quot; __ main __ &quot;；如果作为模块引入，则hw. __ name __ == &quot;hw&quot;，即变量 __ name __ 的值是模块名称。这是一种简单的区分执行程序还是模块引入的方法。在一般情况下，如果仅仅是用作模块引入，不必写 if __ name __ == &quot;__ main __&quot;。</p>
+<h4 id="2模块的位置">2.模块的位置</h4>
+<p>在前面的过程中，为了让自己写的模块能够被python解释器知道，需要用sys.path.append()，</p>
+<pre><code class="language-python">&gt;&gt;&gt; import pprint
+&gt;&gt;&gt; pprint.pprint(sys.path)
+['',
+ 'C:\\Users\\wenxc\\python37.zip',
+ 'C:\\Users\\wenxc\\DLLs',
+ 'C:\\Users\\wenxc\\lib',
+ 'C:\\Users\\wenxc',
+ 'C:\\Users\\wenxc\\AppData\\Roaming\\Python\\Python37\\site-packages',
+ 'C:\\Users\\wenxc\\lib\\site-packages',
+ 'C:\\Users\\wenxc\\Desktop\\hw.py']
+
+</code></pre>
+<p>将模块化的文件放到指定位置是一种不错的方法，当然也能用 sys.path.append() ，不管把文件放在哪里，都可以把其位置告诉 Python 解释器。虽然这种方法在前面用了，但其实是很不常用的，因为它也有麻烦的地方，比如在交互模式下，如果关闭了，再开启，还得重新告知。比较常用的方法是设置 PYTHONPATH 环境变量。</p>
+<p>环境变量设置，建立一个目录，然后将自己的》py文件放到这里，并设置环境变量。</p>
+<h4 id="3-__-all-__在模块中的作用">3. __ all __在模块中的作用</h4>
+<p>前面的内容虽然都比较简单，但已经显示了编写模块以及在程序中导入模块的基本方式。在实践中，所编写的模块要更复杂，涉及的变量类型也更多。</p>
+<pre><code class="language-python"># coding:utf-8
+
+
+public_variable = &quot;Hello, I am a public variable.&quot;
+
+_private_variable = &quot;Hi, I am a private variable.&quot;
+
+
+def public_teacher():
+
+    print(&quot;I am a public teacher, I am from JP.&quot;)
+
+
+def _private_teacher():
+
+    print(&quot;I am a private teacher, I am from CN.&quot;)
+
+</code></pre>
+<p>接下来重复之前的操作</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;C:\\Users\\wenxc\\Desktop\\mz.py&quot;)
+
+&gt;&gt;&gt; import pp
+
+&gt;&gt;&gt; from mz import *
+
+&gt;&gt;&gt; public_variable()
+
+'Hello, I am a public variable.'
+
+&gt;&gt;&gt; _private_variable()
+
+Traceback (most recent call last):
+
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+
+NameError: name '_private_variable' is not defined
+
+</code></pre>
+<p>变量 public_variable 能够被使用，但是另外一个变量 _private_variable 不能被调用，先观察一下两者的区别，后者是以单下画线开头的，这样的是私有变量。而 from pp import * 的含义是“希望能访问模块（mz）中有权限访问的全部名称”，那些被视为私有的变量或者函数或者类，则没有权限被访问。</p>
+<p>再如</p>
+<pre><code class="language-python">&gt;&gt;&gt; public_teacher()
+
+  I am a public teacher, I am from JP.
+
+&gt;&gt;&gt; _private_teacher()
+
+Traceback (most recent call last):
+
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+
+NameError: name '_private_teacher' is not defined
+
+</code></pre>
+<p>但这也不是绝对的，我们可以通过一定会的方式来访问带有私有性质的东西</p>
+<pre><code class="language-python">&gt;&gt;&gt; import mz
+
+&gt;&gt;&gt; mz._private_teacher()
+
+I am a private teacher, I am from CN.
+
+&gt;&gt;&gt; mz._private_variable
+
+'Hi, I am a private variable.'
+
+</code></pre>
+<p>然后在对mz.py进行修改：</p>
+<pre><code class="language-python"># coding:utf-8
+
+
+__all__ = ['_private_variable', 'public_teacher']
+
+
+public_variable = &quot;Hello, I am a public variable.&quot;
+
+_private_variable = &quot;Hi, I am a private variable.&quot;
+
+
+def public_teacher():
+
+    print(public_variable)
+
+
+def _private_teacher():
+
+        print(_private_variable)
+
+</code></pre>
+<p>在修改之后的 pp.py 中，增加了 __ all __ 变量以及相应的值，在列表中包含了一个私有变量的名字和一个函数的名字。这是在告诉引用本模块的解释器，这两个东西是有权限被访问的，而且只有这两个东西。</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;~/Documents/StarterLearningPython/2code/pp.py&quot;)
+
+&gt;&gt;&gt; from pp import *
+
+&gt;&gt;&gt; public_variable
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name 'public_variable' is not defined
+
+&gt;&gt;&gt; _private_variable
+'Hi, I am a private variable.'
+
+&gt;&gt;&gt; public_teacher()
+Hello, I am a public variable.
+
+&gt;&gt;&gt; _private_teacher()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name '_private_teacher' is not defined
+
+</code></pre>
+<p>可以看到不在__ all __ 中的变量都不再能被访问，而如果以 import mz 引入模块，再用mz. _ private_teacher的方式引用对私有变量也有效，这也是两种引用方式的区别。</p>
+<h4 id="4-包和库">4.  包和库</h4>
+<p>顾名思义，包和库都是比“模块”大的。一般来讲，一个“包”里面会有多个模块，当然，“库”是一个更大的概念了，比如 Python 标准库中的每个库都有好多个包，每个包都有若干个模块。</p>
+<p>一个包由多个模块组成，即有多个.py 的文件，那么这个所谓的“包”就是我们熟悉的一个目录罢了。现在需要解决如何引用某个目录中的模块问题。解决方法就是在该目录中放一个 __ init __ .py 文件。__ init __.py 是一个空文件，将它放在某个目录中，就可以将该目录中的其他.py 文件作为模块被引用。</p>
+<p>例如，建立一个目录，名曰：package_w，里面依次放了 hw.py 和 mz.py 两个文件，然后建立一个空文件 __ init __.py</p>
+<p>接下来，需要导入这个包（package_w）中的模块,这里利用环境变量里已有的文件夹：C:\Users\wenxc\lib\site-packages</p>
+<p>下面这种方法很清晰明了。</p>
+<pre><code class="language-python">&gt;&gt;&gt; import package_w.hw
+
+&gt;&gt;&gt; package_w.hw.display()
+
+'hello world !'
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用HEXO构建个人博客]]></title>
+        <id>https://wenxc.github.io/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/</id>
+        <link href="https://wenxc.github.io/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/">
+        </link>
+        <updated>2019-08-01T13:58:45.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown （或其他渲染引擎）解析文章，利用靓丽的主题快速帮您生成静态网页，并可将网页按需求进行推送。文章记录笔者安装及使用过程中的一些问题及经验。参考网站：https://hexo.io/zh-cn/docs/</p>
+</blockquote>
+<hr>
+<!---more-->
+<h3 id="准备">准备</h3>
+<ul>
+<li>node.js</li>
+<li>git</li>
+</ul>
+<p>hexo基于node开发，下载地址 https://nodejs.org/en/，选择LTS版本即可<br>
+git大家都比较熟悉，不多介绍。</p>
+<h3 id="安装hexo">安装hexo</h3>
+<p><strong>使用node command prompt 或gitbash</strong></p>
+<p>使用npm安装软件包可能下载速度很慢，可以根据需要安装淘宝的cnpm，使用淘宝镜像库，减少安装时间。</p>
+<p><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></p>
+<p>后面的过程以cnpm为例，没有安装的直接以npm代替ncpm即可</p>
+<p>安装hexo，查看hexo版本：</p>
+<p><code>cnpm install -g hexo-cli</code></p>
+<p><code>hexo -v</code></p>
+<p>这一步成功说明hexo已成功安装，接下来就是制作自己的博客</p>
+<h3 id="制作博客">制作博客</h3>
+<p>构建博客框架</p>
+<p>在合适的路径下生成博客文件夹</p>
+<p><code>mdr blogname</code></p>
+<p>在blog路径下初始化hexo，这里不同的环境稍有差异</p>
+<ul>
+<li>
+<p>Windows环境下：</p>
+<pre><code class="language-javascript">cd blog  
+hexo  init
+</code></pre>
+</li>
+<li>
+<p>macOS环境下：</p>
+<pre><code class="language-javascript">cd blog
+sudo hexo init
+</code></pre>
+</li>
+</ul>
+<p>初始化后先将博客网页发布在本地：<code>hexo s</code> ，通过本地浏览器<code>localhost:4000</code>预览</p>
+<p>此时是hexo的初始页面</p>
+<figure data-type="image" tabindex="1"><img src="%E4%BD%BF%E7%94%A8HEXO%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/chushi.png" alt="chushi" loading="lazy"></figure>
+<p>制作自己的博客内容</p>
+<p><code>hexo new &quot;我的第一篇博客文章&quot;</code></p>
+<figure data-type="image" tabindex="2"><img src="%E4%BD%BF%E7%94%A8HEXO%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0.png" alt="我的第一篇博客文章" loading="lazy"></figure>
+<p>新的文章存储在source/_post 路径下, 使用文本或typora对文章进行编辑，再发布：</p>
+<p><code>hexo clean &amp;&amp; g &amp;&amp; s</code></p>
+<p>重新发布前一定要先把原来的数据清除，否则可能会出现更新不及时或内容无法上传等情况</p>
+<h3 id="远程部署">远程部署</h3>
+<p>hexo生成的博客网页可以直接发布到网站，也可以部署到自己github，推荐使用github</p>
+<p>建立github仓库，把文章部署到自己的仓库<br>
+在新建仓库时需注意仓库的第一字段必须与owner相同。博客建成后，仓库链接就可以用作分享链接。<br>
+<img src="%E4%BD%BF%E7%94%A8HEXO%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.png" alt="新建仓库" loading="lazy"></p>
+<blockquote>
+<p>hexo框架的博客有两份主要的配置文件，其名称都是 <code>_config.yml</code>。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。</p>
+<p>为了描述方便，在以下说明中，将前者称为 <strong>站点配置文件</strong>， 后者称为 <strong>主题配置文件</strong></p>
+</blockquote>
+<p>修改站点配置文件 Deployment 部分，填写 deploy ：</p>
+<blockquote>
+<p>deploy:<br>
+type: git</p>
+<p>repo: https://github.com/Wenxc/Wenxc.github.io</p>
+<p>branch: master</p>
+</blockquote>
+<p>安装部署插件：</p>
+<p><code>cnpm install --save hexo-deployer-git</code></p>
+<p>把博客部署到仓库：</p>
+<p><code>hexo d</code></p>
+<blockquote>
+<p>Windows环境直接推送可能会报错，这是因为没有指定邮箱和用户名，部署前先配置GitHub帐户<br>
+git config --global user.email &quot;you@example.com&quot;<br>
+git config --global user.name &quot;Your Name&quot;</p>
+</blockquote>
+<p>然后再重新执行部署，成功后新建的仓库内就能看到博客<br>
+<img src="%E4%BD%BF%E7%94%A8HEXO%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E6%8E%A8%E9%80%81%E6%88%90%E5%8A%9F.png" alt="部署成功" loading="lazy"></p>
+<p>这时就可以通过分享github pages 让别人快速访问你的博客了。</p>
+<hr>
+<h3 id="主题美化">主题美化</h3>
+<p>前面步骤只是搭建出了个人博客，对个人博客的美化和内容填充是一个日积月累的过程，慢慢来。<br>
+这里推荐4款github上分享的主题</p>
+<blockquote>
+<p>https://github.com/litten/hexo-theme-yilia</p>
+<p>https://github.com/litten/hexo-theme-mellow</p>
+<p>https://github.com/litten/hexo-theme-next</p>
+<p>https://github.com/litten/hexo-theme-concise</p>
+</blockquote>
+<p>以yilia为例，克隆到本地或直接下载后解压到themse文件夹内</p>
+<pre><code class="language-javascript">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
+</code></pre>
+<p>配置参数文件</p>
+<p>在站点配置文件Extensions部分，将theme的landscape改为yilia</p>
+<blockquote>
+<p>Plugins: https://hexo.io/plugins/<br>
+Themes: https://hexo.io/themes/<br>
+theme: landscape</p>
+</blockquote>
+<p>然后清除缓存，更新数据库发布，部署到仓库。（每次更新数据前必须清理缓存）</p>
+<p><code>hexo clean &amp;&amp; g &amp;&amp; s hexo d</code></p>
 ]]></content>
     </entry>
     <entry>

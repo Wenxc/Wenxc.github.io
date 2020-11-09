@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="玻璃晴朗，橘子辉煌">
 <meta name="theme-color" content="#000">
-<title>关于 | Wenxc&#39;s Blog</title>
+<title>Python调用动态链接库DLL学习笔记 | Wenxc&#39;s Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1604933823110">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="关于" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="Python调用动态链接库DLL学习笔记" />
+  <meta name="keywords" content="Python" />
 </head>
 
 <body>
@@ -235,10 +235,21 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#python%E8%B0%83%E7%94%A8%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93dll">Python调用动态链接库DLL</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述：</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法：</a></li>
+<li><a href="#%E6%B5%81%E7%A8%8B">流程：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -506,8 +517,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://wenxc.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">
+      Python调用动态链接库DLL学习笔记
     </a>
   </h1>
   <div class="post-meta">
@@ -515,33 +526,463 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-01-25 19:09:48">2019-01-25</span>
+      <span class="publish-time" data-t="2019-09-09 22:05:51">2019-09-09</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://wenxc.github.io/tag/sMIqAF0gj/">
+        <span>Python</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>9<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>31<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1940<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <h4 id="python调用动态链接库dll">Python调用动态链接库DLL</h4>
+<p>动态链接库（DLL，全称Dynamic Link Library）进程之间共享使用的函数库。动态链接库提供了一种方法，是进程可以调用不属于其自身可执行代码的函数。函数的可执行代码位于一个DLL中，当调用DLL中的方法时，进程由原本自身的代码执行到DLL中。DLL有助于程序模块化，减少重复开发。</p>
+<!---more--->
+<h5 id="概述">概述：</h5>
+<p>接触dll之前觉得它很神秘，就像是一个黑盒子，静静地躺在安装的程序的某一个文件夹内，既不能直接运行，也不能接收消息，但离了他们程序往往又无法运行。动态链接库是一些独立的文件，其中包含能被可执行程序或其他dll调用来完成某项工作的函数，只有在其他模块调用dll中的函数时，dll才发挥作用。<br>
+在实际编程中，我们可以把完成某项功能的函数放在一个动态链接库里，然后提供给其他程序调用。像Windows API中所有的函数都包含在dll中，如Kernel32.dll, User32.dll, GDI32.dll等。那么dll究竟有什么好处呢？</p>
+<h5 id="语法">语法：</h5>
+<p>__declspec(dllexport):<br>
+将一个函数声名为导出函数，就是说这个函数要被其他程序调用，即作为DLL的一个对外函数接口。<br>
+通常它和extern    &quot;C&quot;   合用，extern &quot;C&quot;告诉编译器该部分可以在C/C++中使用，形式如下：<br>
+extern &quot;C&quot;<br>
+{</p>
+<p>__declspec(dllexport) RETURN_TYPE FUNCTION()</p>
+<p>}</p>
+<p>__declspec(dllimport) :</p>
+<p>当你需要使用DLL中的函数时，往往不需要显示地导入函数，编译器可自动完成。但如果你显示地导入函数，编译器会产生质量更好的代码。由于编译器确切地知道了一个函数是否在一个DLL中，它就可以产生更好的代码，不再需要间接的调用转接。</p>
+<p>Win32的PE格式（Portable Executable Format）把所有导入地址放在一个导入地址表中。<a href=""></a></p>
+<p>__declspec(dllimport) void func1(void);</p>
+<p>void main(void)<br>
+{<br>
+func1();<br>
+}</p>
+<h5 id="流程">流程：</h5>
+<ul>
+<li>
+<p><strong>加载DLL</strong></p>
+<p>根据调用的函数是符合什么调用约定</p>
+<p>stdcall调用约定：两种加载方式</p>
+<pre><code class="language-python">Objdll = ctypes.windll.LoadLibrary(&quot;dllpath&quot;)
+Objdll = ctypes.WinDLL(&quot;dllpath&quot;) 
+</code></pre>
+<p>cdecl调用约定：也有两种加载方式</p>
+<pre><code class="language-python">Objdll = ctypes.cdll.LoadLibrary(&quot;dllpath&quot;)
+Objdll = ctypes.CDLL(&quot;dllpath&quot;)
+</code></pre>
+<p>windll和cdll分别是WinDLL类和CDll类的对象</p>
+</li>
+<li>
+<p><strong>调用DLL中的函数</strong></p>
+<p>在前面加载dll的时候会返回一个DLL对象（假设名字叫Objdll），利用该对象就可以调用dll中的方法。<br>
+e.g. 如果dll中有个方法名字叫Add（注意如果经过stdcall声明的方法，如果不是用def文件声明的导出函数或者extern “C” 声明的话，编译器会对函数名进行修改，这个要注意。）<br>
+调用：nRet = Objdll.Add(12, 15) 即完成一次调用。</p>
+<p>看起来调用似乎很简单，这是因为Add这个函数太简单了，现在假设函数需要你传入一个int类型的指针（int*），可以通过库中的byref关键字来实现，假设现在调用的函数的第三个参数是个int类型的指针。</p>
+<pre><code class="language-python">intPara = c_int(9)
+dll.sub(23, 102, byref(intPara))
+print intPara.value
+</code></pre>
+<p>如果是要传入一个char缓冲区指针，和缓冲区长度，方法至少有四种：</p>
+<pre><code class="language-python"># 方法1
+szPara = create_string_buffer('/0'*100)
+dll.PrintInfo(byref(szPara), 100);
+print szPara.value
+ 
+# 方法2
+sBuf = 'aaaaaaaaaabbbbbbbbbbbbbb'
+pStr = c_char_p( )
+pStr.value = sBuf
+#pVoid = ctypes.cast( pStr, ctypes.c_void_p ).value
+dll.PrintInfo(pStr, len(pStr.value))
+print pStr.value
+ 
+# 方法3
+strMa = &quot;/0&quot;*20
+FunPrint  = dll.PrintInfo
+FunPrint.argtypes = [c_char_p, c_int]
+#FunPrint.restypes = c_void_p
+nRst = FunPrint(strMa, len(strMa))
+print strMa,len(strMa)
+ 
+# 方法4
+pStr2 = c_char_p(&quot;/0&quot;)
+print pStr2.value
+#pVoid = ctypes.cast( pStr, ctypes.c_void_p ).value
+dll.PrintInfo(pStr2, len(pStr.value))
+print pStr2.value
+</code></pre>
+</li>
+<li>
+<p><strong>C基本类型和ctypes中实现的类型映射表</strong></p>
+<p>ctypes数据类型          C数据类型<br>
+c_char                          char<br>
+c_short                         short<br>
+c_int                             int<br>
+c_long                          long<br>
+c_ulong                        unsign long<br>
+c_float                          float<br>
+c_double                      double<br>
+c_void_p                       void<br>
+对应的指针类型是在后面加上&quot;_p&quot;，如int*是c_int_p等等。<br>
+在python中要实现c语言中的结构，需要用到类。</p>
+</li>
+<li>
+<p><strong>DLL中的函数返回一个指针</strong></p>
+<p>虽然这不是一个常用的方法，不过这种情况的处理方法也很简单，其实返回的都是地址，把他们转换相应的python类型，再通过value属性访问。</p>
+<pre><code class="language-python">pchar = dll.getbuffer()
+szbuffer = c_char_p(pchar)
+print szbuffer.value
+</code></pre>
+</li>
+<li>
+<p><strong>处理C中的结构体类型</strong></p>
+<p>这是最麻烦也是最复杂的一种调用，在python里面申明一个类似c的结构体，要用到类，并且这个类必须继承自Structure。<br>
+先看一个简单的例子：<br>
+C里面dll的定义如下：</p>
+<pre><code class="language-c">typedef struct _SimpleStruct
+{
+    int    nNo;
+    float  fVirus;
+    char   szBuffer[512];
+} SimpleStruct, *PSimpleStruct;
+typedef const SimpleStruct*  PCSimpleStruct;
+ 
+extern &quot;C&quot;int  __declspec(dllexport) PrintStruct(PSimpleStruct simp);
+int PrintStruct(PSimpleStruct simp)
+{
+    printf (&quot;nMaxNum=%f, szContent=%s&quot;, simp-&gt;fVirus, simp-&gt;szBuffer);
+return simp-&gt;nNo;
+}
+</code></pre>
+<p>python中的定义：</p>
+<pre><code class="language-python">from ctypes import *
+class SimpStruct(Structure):
+    _fields_ = [ (&quot;nNo&quot;, c_int),
+              (&quot;fVirus&quot;, c_float),
+              (&quot;szBuffer&quot;, c_char * 512)]
+ 
+dll = CDLL(&quot;AddDll.dll&quot;)
+simple = SimpStruct();
+simple.nNo = 16
+simple.fVirus = 3.1415926
+simple.szBuffer = &quot;magicTong/0&quot;
+print dll.PrintStruct(byref(simple))
+</code></pre>
+<p>上面例子结构体很简单，但是如果结构体里面有指针，甚至是指向结构体的指针，处理起来会复杂很多，不过Python里面也有相应的处理方法，下面这个例子来自网上<br>
+C代码如下：</p>
+<pre><code class="language-c++">typedef struct 
+
+{
+
+char words[10];
+
+}keywords;
+
+ 
+
+typedef struct 
+
+{
+
+keywords *kws;
+
+unsigned int len;
+
+}outStruct;
+
+extern &quot;C&quot; int __declspec(dllexport) test(outStruct *o);
+
+int test(outStruct *o)
+
+{
+
+unsigned int i = 4;
+
+o-&gt;kws = (keywords *)malloc(sizeof(unsigned char) * 10 * i);
+
+strcpy(o-&gt;kws[0].words, &quot;The First Data&quot;);
+
+strcpy(o-&gt;kws[1].words, &quot;The Second Data&quot;);
+
+ 
+
+o-&gt;len = i;
+
+return 1;
+
+}
+</code></pre>
+<p>Python代码如下：</p>
+<pre><code class="language-python">class keywords(Structure):
+ 
+        _fields_ = [('words', c_char *10),]
+ 
+ 
+ 
+class outStruct(Structure):
+ 
+        _fields_ = [('kws', POINTER(keywords)),
+ 
+                    ('len', c_int),]
+ 
+o = outStruct()
+ 
+dll.test(byref(o))
+ 
+ 
+ 
+print o.kws[0].words;
+ 
+print o.kws[1].words;
+ 
+print o.len
+</code></pre>
+</li>
+<li>
+<p>两个例子</p>
+<ul>
+<li>这是一个GUID生成器，其实很多第三方的python库已经有封装好的库可以调用，不过这得装了那个库才行，如果想直接调用一些API，对于python来说，也要借助一个第三方库才行，这个例子比较简单，就是用C++调用win32 API来产生GUID，然后python通过调用C++写的dll来获得这个GUID。<br>
+c++代码如下：</li>
+</ul>
+<pre><code class="language-c++">extern &quot;C&quot;__declspec(dllexport) char* newGUID(); 
+ 
+char* newGUID() 
+ 
+{
+ 
+     static char buf[64] = {0};
+ 
+     statc GUID guid;
+ 
+     if (S_OK == ::CoCreateGuid(&amp;guid)) 
+ 
+     {
+ 
+       _snprintf(buf, sizeof(buf),
+ 
+&quot;%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X&quot;, 
+ 
+guid.Data1,
+ 
+guid.Data2,
+ 
+guid.Data3,
+ 
+guid.Data4[0], guid.Data4[1],
+ 
+guid.Data4[2], guid.Data4[3],
+ 
+guid.Data4[4], guid.Data4[5],
+ 
+guid.Data4[6], guid.Data4[7]
+ 
+); 
+ 
+       ::MessageBox(NULL, buf, &quot;GUID&quot;, MB_OK); 
+ 
+      }
+ 
+     return (char*)buf;
+ 
+}
+
+</code></pre>
+<p>python代码如下：</p>
+<pre><code class="language-python">def CreateGUID():
+ 
+    &quot;&quot;&quot;
+    创建一个全局唯一标识符
+    类似：E06093E2-699A-4BF2-A325-4F1EADB50E18
+    NewVersion
+    &quot;&quot;&quot;
+ 
+    try:
+ 
+        # dll path
+ 
+        strDllPath = sys.path[0] + str(os.sep) + &quot;createguid.dll&quot;
+ 
+        dll = CDLL(strDllPath)
+ 
+        b = dll.newGUID()
+ 
+        a = c_char_p(b)
+ 
+    except Exception, error:
+ 
+        print error
+ 
+        return &quot;&quot;
+ 
+    return a.value
+</code></pre>
+<ul>
+<li>
+<p>这个例子是调用kernel32.dll中的createprocessA函数来启动一个记事本进程</p>
+<pre><code class="language-python">#  -*- coding:utf-8 -*- 
+ 
+from ctypes import * 
+ 
+ 
+ 
+# 定义_PROCESS_INFORMATION结构体
+ 
+class _PROCESS_INFORMATION(Structure):
+ 
+    _fields_ = [('hProcess', c_void_p),
+ 
+                ('hThread', c_void_p),
+ 
+                ('dwProcessId', c_ulong),
+ 
+                ('dwThreadId', c_ulong)]
+ 
+ 
+ 
+# 定义_STARTUPINFO结构体
+ 
+class _STARTUPINFO(Structure):
+ 
+    _fields_ = [('cb',c_ulong),
+ 
+                ('lpReserved', c_char_p),
+ 
+                ('lpDesktop', c_char_p),
+ 
+                ('lpTitle', c_char_p),
+ 
+                ('dwX', c_ulong),
+ 
+                ('dwY', c_ulong),
+ 
+                ('dwXSize', c_ulong),
+ 
+                ('dwYSize', c_ulong),
+ 
+                ('dwXCountChars', c_ulong),
+ 
+                ('dwYCountChars', c_ulong),
+ 
+                ('dwFillAttribute', c_ulong),
+ 
+                ('dwFlags', c_ulong),
+ 
+                ('wShowWindow', c_ushort),
+ 
+                ('cbReserved2', c_ushort),
+ 
+                ('lpReserved2', c_char_p),
+ 
+                ('hStdInput', c_ulong),
+ 
+                ('hStdOutput', c_ulong),
+ 
+                ('hStdError', c_ulong)]
+ 
+ 
+ 
+NORMAL_PRIORITY_CLASS = 0x00000020 #定义NORMAL_PRIORITY_CLASS
+ 
+kernel32 = windll.LoadLibrary(&quot;kernel32.dll&quot;)  #加载kernel32.dll
+ 
+CreateProcess = kernel32.CreateProcessA   #获得CreateProcess函数地址
+ 
+ReadProcessMemory = kernel32.ReadProcessMemory #获得ReadProcessMemory函数地址
+ 
+WriteProcessMemory = kernel32.WriteProcessMemory #获得WriteProcessMemory函数地址
+ 
+TerminateProcess = kernel32.TerminateProcess
+ 
+ 
+ 
+# 声明结构体
+ 
+ProcessInfo = _PROCESS_INFORMATION()
+ 
+StartupInfo = _STARTUPINFO()
+ 
+fileName = 'c:/windows/notepad.exe'       # 要进行修改的文件
+ 
+address = 0x0040103c        # 要修改的内存地址
+ 
+strbuf = c_char_p(&quot;_&quot;)        # 缓冲区地址
+ 
+bytesRead = c_ulong(0)       # 读入的字节数
+ 
+bufferSize =  len(strbuf.value)     # 缓冲区大小
+ 
+ 
+ 
+# 创建进程 
+ 
+CreateProcess(fileName, 0, 0, 0, 0, NORMAL_PRIORITY_CLASS,0, 0, byref(StartupInfo), byref(ProcessInfo))
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
 
             </div>
             
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Wenxc
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/" title="Python调用动态链接库DLL学习笔记">https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://wenxc.github.io/tag/sMIqAF0gj/"># Python</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="数据结构学习笔记" href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/">数据结构学习笔记</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="数据结构学习笔记" href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Hexo博客使用经验" href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">Hexo博客使用经验</a>
+        <a class="nav-mobile-next" title="Hexo博客使用经验" href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
             
             
   

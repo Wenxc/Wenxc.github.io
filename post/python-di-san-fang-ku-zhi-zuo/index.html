@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="玻璃晴朗，橘子辉煌">
 <meta name="theme-color" content="#000">
-<title>关于 | Wenxc&#39;s Blog</title>
+<title>Python第三方库制作 | Wenxc&#39;s Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1604933823110">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="关于" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="Python第三方库制作" />
+  <meta name="keywords" content="Python" />
 </head>
 
 <body>
@@ -235,10 +235,22 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">文件结构</a></li>
+<li><a href="#setuppy-%E9%85%8D%E7%BD%AE">setup.py 配置</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E4%B8%8A%E4%BC%A0">上传</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E6%A8%A1%E5%9D%97">编写模块</a>
+<ul>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E6%98%AF%E7%A8%8B%E5%BA%8F">1. 模块是程序</a></li>
+<li><a href="#2%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%8D%E7%BD%AE">2.模块的位置</a></li>
+<li><a href="#3-__-all-__%E5%9C%A8%E6%A8%A1%E5%9D%97%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8">3. __ all __在模块中的作用</a></li>
+<li><a href="#4-%E5%8C%85%E5%92%8C%E5%BA%93">4.  包和库</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -506,8 +518,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://wenxc.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/">
+      Python第三方库制作
     </a>
   </h1>
   <div class="post-meta">
@@ -515,33 +527,429 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-01-25 19:09:48">2019-01-25</span>
+      <span class="publish-time" data-t="2019-08-20 18:25:15">2019-08-20</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://wenxc.github.io/tag/sMIqAF0gj/">
+        <span>Python</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>13<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>31<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2849<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+              <hr>
+<p>title:<br>
+date: 2019-08-08 17:52:28<br>
+tags: python<br>
+categories:</p>
+<hr>
+<blockquote>
+<p>做网格模型操作的python第三方库，还在补充完善。</p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+<!--- more-->
+<h3 id="文件结构">文件结构</h3>
+<pre><code>|--smart
+|  |--static
+|  |  |--icon.svg
+|  |  |--confg.json
+|  |--engine
+|  |  |--__init__.py
+|  |  |--core.py
+|  |--__init__.py
+|  |--__version__.py
+|  |--api.py
+|  |--utils.py
+|--tests
+|  |--__init__.py
+|--LICENSE
+|--README.rst
+|--setup.py 
+</code></pre>
+<p>smart: 作为项目核心代码模块，提供所有的对外接口和实现。其内部可以包含子模块和静态文件<br>
+tests: 包含所有的测试用例<br>
+LICENSE: 编写相关版权信息<br>
+README: 提供项目基本描述和相关使用方法介绍等<br>
+setup.py: 项目的安装配置文件</p>
+<hr>
+<h3 id="setuppy-配置">setup.py 配置</h3>
+<p>setup.py 主要使用setuptools的setup模块，提供打包所需要的基本信息。python依赖此脚本中的配置信息。将相关模块、静态文件，打包成一个完整的模块安装到site-packages文件。</p>
+<p>基本示例：</p>
+<pre><code># 需要将那些包导入
+packages = [&quot;smart&quot;, &quot;smart.engine&quot;]
+
+# 导入静态文件
+file_data = [
+    (&quot;smart/static&quot;, [&quot;smart/static/icon.svg&quot;, &quot;smart/static/config.json&quot;]),
+]
+
+# 第三方依赖
+requires = [
+    &quot;pandas&gt;=0.23.4&quot;
+]
+
+# 自动读取version信息
+about = {}
+with open(os.path.join(here, 'smart', '__version__.py'), 'r', 'utf-8') as f:
+    exec(f.read(), about)
+
+# 自动读取readme
+with open('README.rst', 'r', 'utf-8') as f:
+    readme = f.read()
+
+setup(
+    name=about[&quot;__title__&quot;],  # 包名称
+    version=about[&quot;__version__&quot;],  # 包版本
+    description=about[&quot;__description__&quot;],  # 包详细描述
+    long_description=readme,   # 长描述，通常是readme，打包到PiPy需要
+    author=about[&quot;__author__&quot;],  # 作者名称
+    author_email=about[&quot;__author_email__&quot;],  # 作者邮箱
+    url=about[&quot;__url__&quot;],   # 项目官网
+    packages=packages,    # 项目需要的包
+    data_files=file_data,   # 打包时需要打包的数据文件，如图片，配置文件等
+    include_package_data=True,  # 是否需要导入静态数据文件
+    python_requires=&quot;&gt;=3.0, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3*&quot;,  # Python版本依赖
+    install_requires=requires,  # 第三方库依赖
+    zip_safe=False,  # 此项需要，否则卸载时报windows error
+    classifiers=[    # 程序的所属分类列表
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy'
+    ],
+)
+</code></pre>
+<hr>
+<h3 id="安装">安装</h3>
+<ul>
+<li>
+<p>打包之前，可以先验证setup.py的正确性</p>
+<pre><code>python setup.py check
+</code></pre>
+<p>如果没有任何错误或者警告，则说明您的setup.py是没问题的<br>
+如果没有问题，就可以使用下方的命令正式打包</p>
+<pre><code>python setup.py sdist
+</code></pre>
+<p>打包完成后，会在顶层目录下生产dist和egg两个目录</p>
+</li>
+<li>
+<p>如果您的代码包仅供内部使用，又不想直接发送源码，则可以将代码打包成whl文件<br>
+打包成whl命令</p>
+<pre><code># --wheel-dir: 为打包存储的路径 
+# 空格后为需要打包的工程路径
+pip wheel --wheel-dir=D:\\work\\base_package\\dist D:\\work\\base_package
+</code></pre>
+<p>打包完成后就可以看到<code>smart-0.0.1-py3-none-any.whl</code>文件了，将此文件分享后后，对方就可以使用</p>
+<pre><code>pip install smart-0.0.1-py3-none-any.whl
+</code></pre>
+<p>来安装当前库。</p>
+</li>
+</ul>
+<h3 id="上传">上传</h3>
+<p>如果您希望将代码包放到网络上，供所有人开放下载，可以将代码打包上传至PyPi。<br>
+上传代码之前，需要到官网注册pypi账户。https://pypi.org/</p>
+<ul>
+<li>
+<p>直接上传</p>
+<p>使用<code>register</code>命令是最简单的上传方式，但是使用HTTP并未加密，有可能会泄露密码。</p>
+</li>
+</ul>
+<pre><code>  # 注册包
+  python setup.py register
+  # 上传包
+  python setup.py sdist upload
+</code></pre>
+<ul>
+<li>使用twine上传</li>
+</ul>
+<ol>
+<li>安装twine</li>
+</ol>
+<pre><code>pip install twine
+</code></pre>
+<p>​	2.使用twine注册并上传代码</p>
+<pre><code># 注册包
+twine register dist/smart.whl
+# 上传包
+twine upload dist/*
+</code></pre>
+<h3 id="编写模块">编写模块</h3>
+<h4 id="1-模块是程序">1. 模块是程序</h4>
+<p>模块的本质是一个扩展名为.py的python程序。在使用时直接将函数引用过来，节省精力，不需要写雷同的代码。</p>
+<p>但想把自己的.py文件作为模块import过来，必须先让python解释器能够找到你写的模块。比如，在某一目录下，写了这样一个文件：</p>
+<pre><code class="language-python"># coding=utf-8
+ 
+display = &quot;hello world! &quot;
+</code></pre>
+<p>并把它命名为hw.py|，那么这个文件可以作为一个模块被引入，但得首先告诉python解释器我写了一个这样的文件。</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;&quot;C:\\Users\\wenxc\\Desktop\\hw.py&quot;&quot;)
+</code></pre>
+<p>然后把文件作为模块引入</p>
+<pre><code class="language-python">&gt;&gt;&gt; import hw
+
+&gt;&gt;&gt; hw.display
+
+'helloworld!'
+</code></pre>
+<p>这时可以在源路径下看到python模块文件和 _ pycache _ 文件夹。</p>
+<blockquote>
+<p>在 Python 中，解释器将.py 的文件转化为.pyc 文件，而.pyc 文件是由字节码（bytecode）构成的，然后这个.pyc 文件交给一个叫作 Python 虚拟机的东西去运行（那些号称编译型的语言也是这个流程，不同的是它们先有一个明显的编译过程，编译好了之后再运行）。如果.py 文件修改了，Python 解释器会重新编译，只是这个编译过程不全显示给你看。</p>
+<p>有了.pyc 文件后，每次运行就不需要重新让解释器来编译.py 文件了，除非.py 文件修改了。这样，Python 运行的就是那个编译好了的.pyc 文件。</p>
+</blockquote>
+<p>平时在写有关程序然后执行时常常要用到 if __ name __ == &quot;__ main __&quot;，那时我们直接用&quot;python filename.py&quot;的格式来运行该文件，此时我们也有了同样的,py文件，不过是作为模块引入的。接下来探究一下，同样是.py文件，它怎么知道是被当作程序执行还是被当作模块引入？</p>
+<p>先将hw.py文件改造：</p>
+<pre><code class="language-python"># coding=utf-8
+
+def display():
+
+    return &quot;hello world !&quot;
+
+if __name__ == &quot;__main__&quot;:
+
+    print(display())
+</code></pre>
+<p>沿用之前的做法：</p>
+<pre><code class="language-python">$ python pm.py
+
+hello world !
+</code></pre>
+<p>如果将这个程序作为模块导入，会是这样：</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;C:\\Users\\wenxc\\Desktop\\hw.py&quot;)
+
+&gt;&gt;&gt; import hw
+
+&gt;&gt;&gt; hw.display()
+
+'hello world !'
+</code></pre>
+<p>查看模块的属性和方法可以用dir()</p>
+<pre><code class="language-python">&gt;&gt;&gt; dir(hw)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'display']
+</code></pre>
+<p>同样的一个.py文件，可以把它当作程序来执行，也可以把它当作模块引入</p>
+<pre><code class="language-python">&gt;&gt;&gt; __name__
+'__main__'
+&gt;&gt;&gt; hw.__name__
+'hw'
+
+</code></pre>
+<p>如果要作为程序执行则 __ name__ == &quot; __ main __ &quot;；如果作为模块引入，则hw. __ name __ == &quot;hw&quot;，即变量 __ name __ 的值是模块名称。这是一种简单的区分执行程序还是模块引入的方法。在一般情况下，如果仅仅是用作模块引入，不必写 if __ name __ == &quot;__ main __&quot;。</p>
+<h4 id="2模块的位置">2.模块的位置</h4>
+<p>在前面的过程中，为了让自己写的模块能够被python解释器知道，需要用sys.path.append()，</p>
+<pre><code class="language-python">&gt;&gt;&gt; import pprint
+&gt;&gt;&gt; pprint.pprint(sys.path)
+['',
+ 'C:\\Users\\wenxc\\python37.zip',
+ 'C:\\Users\\wenxc\\DLLs',
+ 'C:\\Users\\wenxc\\lib',
+ 'C:\\Users\\wenxc',
+ 'C:\\Users\\wenxc\\AppData\\Roaming\\Python\\Python37\\site-packages',
+ 'C:\\Users\\wenxc\\lib\\site-packages',
+ 'C:\\Users\\wenxc\\Desktop\\hw.py']
+
+</code></pre>
+<p>将模块化的文件放到指定位置是一种不错的方法，当然也能用 sys.path.append() ，不管把文件放在哪里，都可以把其位置告诉 Python 解释器。虽然这种方法在前面用了，但其实是很不常用的，因为它也有麻烦的地方，比如在交互模式下，如果关闭了，再开启，还得重新告知。比较常用的方法是设置 PYTHONPATH 环境变量。</p>
+<p>环境变量设置，建立一个目录，然后将自己的》py文件放到这里，并设置环境变量。</p>
+<h4 id="3-__-all-__在模块中的作用">3. __ all __在模块中的作用</h4>
+<p>前面的内容虽然都比较简单，但已经显示了编写模块以及在程序中导入模块的基本方式。在实践中，所编写的模块要更复杂，涉及的变量类型也更多。</p>
+<pre><code class="language-python"># coding:utf-8
+
+
+public_variable = &quot;Hello, I am a public variable.&quot;
+
+_private_variable = &quot;Hi, I am a private variable.&quot;
+
+
+def public_teacher():
+
+    print(&quot;I am a public teacher, I am from JP.&quot;)
+
+
+def _private_teacher():
+
+    print(&quot;I am a private teacher, I am from CN.&quot;)
+
+</code></pre>
+<p>接下来重复之前的操作</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;C:\\Users\\wenxc\\Desktop\\mz.py&quot;)
+
+&gt;&gt;&gt; import pp
+
+&gt;&gt;&gt; from mz import *
+
+&gt;&gt;&gt; public_variable()
+
+'Hello, I am a public variable.'
+
+&gt;&gt;&gt; _private_variable()
+
+Traceback (most recent call last):
+
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+
+NameError: name '_private_variable' is not defined
+
+</code></pre>
+<p>变量 public_variable 能够被使用，但是另外一个变量 _private_variable 不能被调用，先观察一下两者的区别，后者是以单下画线开头的，这样的是私有变量。而 from pp import * 的含义是“希望能访问模块（mz）中有权限访问的全部名称”，那些被视为私有的变量或者函数或者类，则没有权限被访问。</p>
+<p>再如</p>
+<pre><code class="language-python">&gt;&gt;&gt; public_teacher()
+
+  I am a public teacher, I am from JP.
+
+&gt;&gt;&gt; _private_teacher()
+
+Traceback (most recent call last):
+
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+
+NameError: name '_private_teacher' is not defined
+
+</code></pre>
+<p>但这也不是绝对的，我们可以通过一定会的方式来访问带有私有性质的东西</p>
+<pre><code class="language-python">&gt;&gt;&gt; import mz
+
+&gt;&gt;&gt; mz._private_teacher()
+
+I am a private teacher, I am from CN.
+
+&gt;&gt;&gt; mz._private_variable
+
+'Hi, I am a private variable.'
+
+</code></pre>
+<p>然后在对mz.py进行修改：</p>
+<pre><code class="language-python"># coding:utf-8
+
+
+__all__ = ['_private_variable', 'public_teacher']
+
+
+public_variable = &quot;Hello, I am a public variable.&quot;
+
+_private_variable = &quot;Hi, I am a private variable.&quot;
+
+
+def public_teacher():
+
+    print(public_variable)
+
+
+def _private_teacher():
+
+        print(_private_variable)
+
+</code></pre>
+<p>在修改之后的 pp.py 中，增加了 __ all __ 变量以及相应的值，在列表中包含了一个私有变量的名字和一个函数的名字。这是在告诉引用本模块的解释器，这两个东西是有权限被访问的，而且只有这两个东西。</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+
+&gt;&gt;&gt; sys.path.append(&quot;~/Documents/StarterLearningPython/2code/pp.py&quot;)
+
+&gt;&gt;&gt; from pp import *
+
+&gt;&gt;&gt; public_variable
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name 'public_variable' is not defined
+
+&gt;&gt;&gt; _private_variable
+'Hi, I am a private variable.'
+
+&gt;&gt;&gt; public_teacher()
+Hello, I am a public variable.
+
+&gt;&gt;&gt; _private_teacher()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name '_private_teacher' is not defined
+
+</code></pre>
+<p>可以看到不在__ all __ 中的变量都不再能被访问，而如果以 import mz 引入模块，再用mz. _ private_teacher的方式引用对私有变量也有效，这也是两种引用方式的区别。</p>
+<h4 id="4-包和库">4.  包和库</h4>
+<p>顾名思义，包和库都是比“模块”大的。一般来讲，一个“包”里面会有多个模块，当然，“库”是一个更大的概念了，比如 Python 标准库中的每个库都有好多个包，每个包都有若干个模块。</p>
+<p>一个包由多个模块组成，即有多个.py 的文件，那么这个所谓的“包”就是我们熟悉的一个目录罢了。现在需要解决如何引用某个目录中的模块问题。解决方法就是在该目录中放一个 __ init __ .py 文件。__ init __.py 是一个空文件，将它放在某个目录中，就可以将该目录中的其他.py 文件作为模块被引用。</p>
+<p>例如，建立一个目录，名曰：package_w，里面依次放了 hw.py 和 mz.py 两个文件，然后建立一个空文件 __ init __.py</p>
+<p>接下来，需要导入这个包（package_w）中的模块,这里利用环境变量里已有的文件夹：C:\Users\wenxc\lib\site-packages</p>
+<p>下面这种方法很清晰明了。</p>
+<pre><code class="language-python">&gt;&gt;&gt; import package_w.hw
+
+&gt;&gt;&gt; package_w.hw.display()
+
+'hello world !'
+
+</code></pre>
 
             </div>
             
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Wenxc
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/" title="Python第三方库制作">https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://wenxc.github.io/tag/sMIqAF0gj/"># Python</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Hexo博客使用经验" href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">Hexo博客使用经验</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Hexo博客使用经验" href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="使用HEXO构建个人博客" href="https://wenxc.github.io/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/">使用HEXO构建个人博客</a>
+        <a class="nav-mobile-next" title="使用HEXO构建个人博客" href="https://wenxc.github.io/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
             
             
   
