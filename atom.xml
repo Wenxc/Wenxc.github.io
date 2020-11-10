@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wenxc.github.io/</id>
     <title>Wenxc</title>
-    <updated>2020-11-10T06:23:11.711Z</updated>
+    <updated>2020-11-10T06:39:53.662Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wenxc.github.io/"/>
     <link rel="self" href="https://wenxc.github.io/atom.xml"/>
@@ -72,8 +72,8 @@ print(torch.__version__)
 <h2 id="参考资料">参考资料</h2>
 <p><a href="https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d">官方教程</a><br>
 <a href="https://research.google.com/colaboratory/faq.html">官方FAQ</a><br>
-https://www.cnblogs.com/smiler/p/6939913.html<br>
-https://www.cnblogs.com/oxspirt/p/6294754.html</p>
+<a href="https://www.cnblogs.com/smiler/p/6939913.html">https://www.cnblogs.com/smiler/p/6939913.html</a><br>
+<a href="https://www.cnblogs.com/oxspirt/p/6294754.html"> https://www.cnblogs.com/oxspirt/p/6294754.html</a></p>
 ]]></content>
     </entry>
     <entry>
@@ -83,11 +83,11 @@ https://www.cnblogs.com/oxspirt/p/6294754.html</p>
         </link>
         <updated>2020-09-15T00:43:12.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
-<p>传统上，Python使用常规文本字符串表示文件路径。由于<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fsnarky.ca%2Fwhy-pathlib-path-doesn-t-inherit-from-str%2F">路径不是字符串</a>，重要的功能是遍布在标准库中的，包括像<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fos.html"><code>os</code></a>，<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fglob.html"><code>glob</code></a>和<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fshutil.html"><code>shutil</code></a>等库。从python3.4以后，pathlib内置，简化文件路径操作，<code>pathlib</code>可以看作<code>os.path</code>功能的一个面向对像化，从Python 3.6开始，添加了文件系统路径协议，整个标准库都支持pathlib模块。这里记录pathlib的Path方法的使用。</p>
+<p>传统上，Python使用常规文本字符串表示文件路径。由于<a href="https://snarky.ca/why-pathlib-path-doesn-t-inherit-from-str/">路径不是字符串</a>，重要的功能是遍布在标准库中的，包括像<a href="https://docs.python.org/3/library/os.html"><code>os</code></a>，<a href="https://docs.python.org/3/library/glob.html"><code>glob</code></a>和<a href="https://docs.python.org/3/library/shutil.html"><code>shutil</code></a>等库。从python3.4以后，pathlib内置，简化文件路径操作，<code>pathlib</code>可以看作<code>os.path</code>功能的一个面向对像化，从Python 3.6开始，添加了文件系统路径协议，整个标准库都支持pathlib模块。这里记录pathlib的Path方法的使用。</p>
 </blockquote>
 ]]></summary>
         <content type="html"><![CDATA[<blockquote>
-<p>传统上，Python使用常规文本字符串表示文件路径。由于<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fsnarky.ca%2Fwhy-pathlib-path-doesn-t-inherit-from-str%2F">路径不是字符串</a>，重要的功能是遍布在标准库中的，包括像<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fos.html"><code>os</code></a>，<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fglob.html"><code>glob</code></a>和<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fshutil.html"><code>shutil</code></a>等库。从python3.4以后，pathlib内置，简化文件路径操作，<code>pathlib</code>可以看作<code>os.path</code>功能的一个面向对像化，从Python 3.6开始，添加了文件系统路径协议，整个标准库都支持pathlib模块。这里记录pathlib的Path方法的使用。</p>
+<p>传统上，Python使用常规文本字符串表示文件路径。由于<a href="https://snarky.ca/why-pathlib-path-doesn-t-inherit-from-str/">路径不是字符串</a>，重要的功能是遍布在标准库中的，包括像<a href="https://docs.python.org/3/library/os.html"><code>os</code></a>，<a href="https://docs.python.org/3/library/glob.html"><code>glob</code></a>和<a href="https://docs.python.org/3/library/shutil.html"><code>shutil</code></a>等库。从python3.4以后，pathlib内置，简化文件路径操作，<code>pathlib</code>可以看作<code>os.path</code>功能的一个面向对像化，从Python 3.6开始，添加了文件系统路径协议，整个标准库都支持pathlib模块。这里记录pathlib的Path方法的使用。</p>
 </blockquote>
 <!-- more -->
 <p>pathlib 库的 Path 方法，可以将一个普通的字符串转换为 pathlib.Path 对象类型的路径</p>
@@ -1361,7 +1361,6 @@ NameError: name '_private_teacher' is not defined
         <content type="html"><![CDATA[<blockquote>
 <p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown （或其他渲染引擎）解析文章，利用靓丽的主题快速帮您生成静态网页，并可将网页按需求进行推送。文章记录笔者安装及使用过程中的一些问题及经验。参考网站：https://hexo.io/zh-cn/docs/</p>
 </blockquote>
-<hr>
 <!---more-->
 <h3 id="准备">准备</h3>
 <ul>
