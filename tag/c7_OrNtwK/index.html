@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="keywords" content="Gridea静态个人博客">
-<meta name="description" content="玻璃晴朗，橘子辉煌">
+<meta name="description" content="QuickNote">
 <meta name="theme-color" content="#000">
 <title>Wenxc&#39;s Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1604966491198">
+<link rel="shortcut icon" href="/favicon.ico?v=1604969632723">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,19 +184,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-count">10</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">6</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">6</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -235,6 +235,22 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
@@ -495,6 +511,500 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wenxc.github.io/post/colab-ru-men/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;记录一下Colab的一些基础的问题及设置。距Colab开放已两年之久，配置时遇到一些与之前的教程不符的地方，进行了一些改进。主要参考https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;Colab（Colaboratory）是谷歌提供的一款基于Jupyter Notebook开发的免费深度学习云平台，尽管只是开放Notebook这样的交互式Python环境，依然可以通过魔法命令和shell命令执行Python脚本（使用和Jupyter Notebook一致，可以参照&lt;a href=&#34;https://blog.csdn.net/zhouchen1998/article/details/100126865&#34;&gt;Jupyter教程&lt;/a&gt;）。同时，Colab配合谷歌其他的应用如Google Drive（谷歌云盘）等共同使用。它预装了几乎所有主流的机器学习和深度学习框架以及常用的工具库，深度学习框架以TensorFlow为主，其他框架需要自行安装。&lt;/p&gt;
+&lt;h2 id=&#34;启动方式&#34;&gt;启动方式&lt;/h2&gt;
+&lt;p&gt;Colab主要有两种启动方式，一种是从Colab的官网主要打开Notebook（ipynb后缀文件），另一种是通过打开自己的Google Drive并关联Colaboratory直接从云盘打开。（&lt;em&gt;个人喜欢后一种方式量，但是两种方式差别不大但也各有局限性&lt;/em&gt;）。&lt;/p&gt;
+&lt;p&gt;第一种方式，Google搜索Colab或者访问&lt;a href=&#34;https://colab.research.google.com/&#34;&gt;官网地址&lt;/a&gt;。如果你是第一次使用，只能看到一个完全用Jupyter Notebook写成的Welcome笔记本，你的笔记本可以来自硬盘（自行创建，如果直接新建notebook会在Google云盘中自动创建名为&lt;code&gt;Colab Notebooks&lt;/code&gt;的文件夹用于默认的Notebook文件存放路径），也可以来自Github（需要授权）或者当即上传（上传的位置决定是否会在时长到达是释放删除）。&lt;/p&gt;
+&lt;p&gt;第二种方式，没有太大扩展空间但是比较实用。在谷歌云盘存放Notebook的文件夹中新建Notebook使用Colaboratory打开即可。这种方式就不能打开Github等仓库Notebook。&lt;/p&gt;
+&lt;h2 id=&#34;notebook配置&#34;&gt;Notebook配置&lt;/h2&gt;
+&lt;p&gt;打开一个新建的Notebook，会看到Colab的工作界面。&lt;/p&gt;
+&lt;p&gt;有一些必要的配置内容，如文件名（点击文件名处即可修改，修改后Google云盘中的Notebook文件名会相应同步修改），GPU环境（默认使用CPU打开，点击导航栏的修改-&amp;gt;笔记本设置-&amp;gt;硬件加速器-&amp;gt;GPU即可，点击保存会重新开启一个新的GPU的docker环境作为该Notebook的后端）以及编辑器环境。&lt;/p&gt;
+&lt;p&gt;配置后测试：！nvidia-smi  #查看CUDA和显存&lt;/p&gt;
+&lt;p&gt;挂载谷歌云盘：使用云盘的主要目的是保存程序运行的结果到云盘，避免colab自动清除导致数据丢失。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from google.colab import drive
+drive.mount(&#39;/content/drive/&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行后结果&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Mounted at /content/drive/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以手动挂载。&lt;/p&gt;
+&lt;h2 id=&#34;安装深度学习框架和其他包&#34;&gt;安装深度学习框架和其他包&lt;/h2&gt;
+&lt;p&gt;在官方教程中已经有Keras、Tensorflow、Pytorch的安装方法，我平时使用Pytorch比较多，所以这里给出我的Pytorch安装代码。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;!pip install torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;具体的pytorch版本选择可以在pytorch官网查看对应的版本。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import torch
+print(torch.__version__)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;1.7.0+cu101
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;其他操作&#34;&gt;其他操作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;!ls  !cd  !wegt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;!git clone url&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;!python train.py&lt;/p&gt;
+&lt;p&gt;et.al&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;可以把Colab看成是&lt;strong&gt;一台带有GPU的Ubuntu虚拟机&lt;/strong&gt;，只不过我们只能用命令行的方式操作它。你可以选择执行系统命令，亦或是直接编写运行python代码。&lt;/li&gt;
+&lt;li&gt;挂载完Google Drive，会在虚拟机里生成一个drive文件夹，直接将Google Drive当成是&lt;strong&gt;一块硬盘&lt;/strong&gt;即可。访问drive文件夹里的文件，就是在访问你的Google Drive里的文件。&lt;/li&gt;
+&lt;li&gt;Colab最多连续使用12小时，超过时间系统会强制掐断正在运行的程序并收回占用的虚拟机。（好像再次连接到虚拟机后，虚拟机是被清空的状态，需要重新配置和安装库等等）&lt;/li&gt;
+&lt;li&gt;请使用科学上网方式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d&#34;&gt;官方教程&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://research.google.com/colaboratory/faq.html&#34;&gt;官方FAQ&lt;/a&gt;&lt;br&gt;
+https://www.cnblogs.com/smiler/p/6939913.html&lt;br&gt;
+https://www.cnblogs.com/oxspirt/p/6294754.html&lt;/p&gt;
+">Colab入门</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wenxc.github.io/post/pathlib-shi-yong-jiao-cheng/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;传统上，Python使用常规文本字符串表示文件路径。由于&lt;a href=&#34;https://links.jianshu.com/go?to=https%3A%2F%2Fsnarky.ca%2Fwhy-pathlib-path-doesn-t-inherit-from-str%2F&#34;&gt;路径不是字符串&lt;/a&gt;，重要的功能是遍布在标准库中的，包括像&lt;a href=&#34;https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fos.html&#34;&gt;&lt;code&gt;os&lt;/code&gt;&lt;/a&gt;，&lt;a href=&#34;https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fglob.html&#34;&gt;&lt;code&gt;glob&lt;/code&gt;&lt;/a&gt;和&lt;a href=&#34;https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fshutil.html&#34;&gt;&lt;code&gt;shutil&lt;/code&gt;&lt;/a&gt;等库。从python3.4以后，pathlib内置，简化文件路径操作，&lt;code&gt;pathlib&lt;/code&gt;可以看作&lt;code&gt;os.path&lt;/code&gt;功能的一个面向对像化，从Python 3.6开始，添加了文件系统路径协议，整个标准库都支持pathlib模块。这里记录pathlib的Path方法的使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;pathlib 库的 Path 方法，可以将一个普通的字符串转换为 pathlib.Path 对象类型的路径&lt;/p&gt;
+&lt;h3 id=&#34;path的属性和方法&#34;&gt;Path的属性和方法&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Path
+│
+├── Attributes
+│       ├── parts
+│       ├── parent &amp;amp; parents
+│       ├── name
+│       ├── suffix &amp;amp; suffixes
+│       └── stem
+│
+│
+└── Methods
+        ├── joinpath(*other)
+        ├── cwd()
+        ├── home()
+        ├── exists()
+        ├── expanduser()
+        ├── glob()
+        ├── rglob(pattern)
+        ├── is_dir()
+        ├── is_file()
+        ├── is_absolute()
+        ├── iterdir()
+        ├── mkdir(mode=0o777, parents=False, exist_ok=False)
+        ├── open(mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=None)
+        ├── rename(target)
+        ├── replace(target)
+        ├── resolve(strict=False)
+        └── rmdir()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;创建路径&#34;&gt;创建路径&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pathlib import Path
+ 
+now_path = Path.cwd()
+home_path = Path.home()
+ 
+print(&amp;quot;当前工作目录&amp;quot;,now_path,type(now_path))
+print(&amp;quot;home目录&amp;quot;,home_path,type(home_path))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出内容&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;当前工作目录 /Users/chennan/pythonproject/demo &amp;lt;class &#39;pathlib.WindowsPath&#39;&amp;gt;
+home目录 /Users/chennan &amp;lt;class &#39;pathlib.WindowsPath&#39;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或者传统方法，直接传入字符串&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+DIR_PATH = pathlib.Path(&amp;quot;/Users/chennan/CDM&amp;quot;)
+print(DIR_PATH,type(DIR_PATH))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出内容&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;/Users/chennan/CDM &amp;lt;class &#39;pathlib.WindowsPath&#39;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Path.mkdir(mode=0o777, parents=False, exist_ok=False)&lt;/p&gt;
+&lt;p&gt;在给定路径下创建新路径。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mode:文件的权限控制&lt;/li&gt;
+&lt;li&gt;parentes:如是是&lt;em&gt;True&lt;/em&gt;,那么缺失的路径中的内容都会自动创建，否则会报&lt;em&gt;FileNotFoundError&lt;/em&gt;的错&lt;/li&gt;
+&lt;li&gt;exist_ok:如果是False,那么当路径已经存在时，会报错；当是True时，会忽略报错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Path(&amp;quot;src/other/side&amp;quot;).mkdir(parents=True)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;读写文件&#34;&gt;读写文件&lt;/h3&gt;
+&lt;p&gt;可以通过“/”直接拼接路径，而且对于Path对象，可以直接使用open操作&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+DIR_PATH = pathlib.Path(&amp;quot;/Users/wenxc/CDM&amp;quot;) / &amp;quot;2000&amp;quot; / &amp;quot;hehe.txt&amp;quot;
+with DIR_PATH.open(&amp;quot;r&amp;quot;) as fs:
+     data = fs.read() 
+print(data) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对path对象也可以使用自身的文件读取方式，不再使用with open&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;.read_text(): 找到对应的路径然后打开文件，读成str格式。等同open操作文件的&amp;quot;r&amp;quot;格式。
+.read_bytes(): 读取字节流的方式。等同open操作文件的&amp;quot;rb&amp;quot;格式。
+.write_text(): 文件的写的操作，等同open操作文件的&amp;quot;w&amp;quot;格式。
+.write_bytes(): 文件的写的操作，等同open操作文件的&amp;quot;wb&amp;quot;格式。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在使用相对路径时&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+py_path =pathlib.Path(&amp;quot;superdemo.py&amp;quot;)
+print(py_path.resolve()) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出的是当前文件的相对路径&lt;/p&gt;
+&lt;h3 id=&#34;选择路径的不同组成部分&#34;&gt;选择路径的不同组成部分&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+ 
+now_path = pathlib.Path.cwd() / &amp;quot;demo.txt&amp;quot;
+print(&amp;quot;name&amp;quot;,now_path.name)
+print(&amp;quot;stem&amp;quot;,now_path.stem)
+print(&amp;quot;suffix&amp;quot;,now_path.suffix)
+print(&amp;quot;parent&amp;quot;,now_path.parent)
+print(&amp;quot;anchor&amp;quot;,now_path.anchor)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出内容如下&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;name demo.txt
+stem demo
+suffix .txt
+parent /Users/wenxc/pythonproject/demo
+anchor /
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;移动和删除文件&#34;&gt;移动和删除文件&lt;/h3&gt;
+&lt;p&gt;使用 replace 方法可以移动文件，如果文件存在则会覆盖。为避免文件可能被覆盖，最简单的方法是在替换之前测试目标是否存在。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+ 
+destination = pathlib.Path.cwd() / &amp;quot;target.txt&amp;quot; 
+source = pathlib.Path.cwd() / &amp;quot;demo.txt&amp;quot;
+if not destination.exists():
+    source.replace(destination)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是上面的方法存在问题就是，在多个进程多 destination 进行的操作的时候就会现问题，可以使用下面的方法避免这个问题。也就是说上面的方法适合单个文件的操作。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+ 
+destination = pathlib.Path.cwd() / &amp;quot;target.txt&amp;quot; 
+source = pathlib.Path.cwd() / &amp;quot;demo.txt&amp;quot;
+with destination.open(mode=&#39;xb&#39;) as fid: 
+    #xb表示文件不存在才操作
+    fid.write(source.read_bytes())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当 destination文件存在的时候上面的代码就会出现 FileExistsError 异常。&lt;br&gt;
+从技术上讲，这会复制一个文件。 要执行移动，只需在复制完成后删除源即可。&lt;br&gt;
+使用 with_name 和 with.shuffix 可以修改文件名字或者后缀。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+source = pathlib.Path.cwd() / &amp;quot;demo.py&amp;quot;
+source.replace(source.with_suffix(&amp;quot;.txt&amp;quot;)) #修改后缀并移动文件，即重命名
+#source依旧指向demo.py,不会变为demo.txt, 再次操作时注意区别
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以使用 .rmdir() 和 .unlink() 来删除文件。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+ 
+destination = pathlib.Path.cwd() / &amp;quot;target&amp;quot; 
+source = pathlib.Path.cwd() / &amp;quot;demo.txt&amp;quot;
+source.unlink()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;统计文件个数&#34;&gt;统计文件个数&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+from collections import Counter
+now_path = pathlib.Path.cwd()
+gen = (i.suffix for i in now_path.iterdir())
+print(Counter(gen))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;根据后缀统计文件夹内的文件数量&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pathlib
+from  collections import Counter
+gen =(p.suffix for p in pathlib.Path.cwd().glob(&#39;*.py&#39;))
+print(Counter(gen))
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;统计py文件的数量&lt;/p&gt;
+&lt;p&gt;glob和rglob的区别&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#获取所有src/stuff文件夹下，以.py为后缀的文件
+for fname in Path(&amp;quot;src/stuff&amp;quot;).glob(&amp;quot;*.py&amp;quot;):
+    print(fname)
+
+src/stuff/__init__.py
+src/stuff/submodule.py
+
+# 比如要返回所有src文件夹下以.py为后缀的文件
+for fname in Path(&amp;quot;src&amp;quot;).rglob(&amp;quot;*.py&amp;quot;):
+    print(fname)
+    
+src/module.py
+src/b.py
+src/stuff/__init__.py
+src/stuff/submodule.py
+
+
+&lt;/code&gt;&lt;/pre&gt;
+">pathlib 使用教程</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wenxc.github.io/post/opencv-tu-pian-cao-zuo/"" data-c="
+          &lt;p&gt;记录OpenCV读取和显示图片的一些基本操作，适合新手入门&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h3 id=&#34;imread&#34;&gt;imread&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cv2.imread(path_of_image, intflag)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数参数一： 需要读入图像的完整的路径&lt;br&gt;
+函数参数二： 标志以什么形式读入图像，可以选择一下方式：&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;cv2.IMREAD_COLOR：&lt;/em&gt; 加载彩色图像。任何图像的透明度都将被忽略。它是默认标志&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; *cv2.IMREAD_GRAYSCALE：*以灰度模式加载图像&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; *cv2.IMREAD_UNCHANGED：*保留读取图片原有的颜色通道&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;·&lt;/strong&gt; *1 ：*等同于cv2.IMREAD_COLOR&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; *0 ：*等同于cv2.IMREAD_GRAYSCALE&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; *-1 ：*等同于cv2.IMREAD_UNCHANGED&lt;/p&gt;
+&lt;h3 id=&#34;imshow&#34;&gt;imshow&lt;/h3&gt;
+&lt;p&gt;imshow函数作用是在窗口中显示图像，窗口自动适合于图像大小，我们也可以通过imutils模块调整显示图像的窗口的大小。函数官方定义如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cv2.imshow(windows_name, image)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数参数一： 窗口名称(字符串)&lt;br&gt;
+函数参数二： 图像对象，类型是numpy中的ndarray类型，注：这里可以通过imutils模块改变图像显示大小，下面示例展示&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cv2.imshow(&#39;origin image&#39;, rgb_img)   #显示原图
+cv2.imshow(&#39;origin image&#39;, imutils.resize(rgb_img, 800))  #利用imutils模块调整显示图像大小
+cv2.imshow(&#39;gray image&#39;, imutils.resize(gray_img, 800))
+if cv2.waitKey(0) == 27:
+    cv2.destroyAllWindows()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;imwrite&#34;&gt;imwrite&lt;/h3&gt;
+&lt;p&gt;imwrite函数检图像保存到本地，官方定义：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cv2.imwrite(image_filename, image)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数参数一： 保存的图像名称(字符串)&lt;br&gt;
+函数参数二： 图像对象，类型是numpy中的ndarray类型&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cv2.imwrite(&#39;rgb_img.jpg&#39;, rgb_img)   #将图像保存成jpg文件
+cv2.imwrite(&#39;gray_img.png&#39;, gray_img) #将图像保存成png文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;窗口销毁函数&#34;&gt;窗口销毁函数&lt;/h3&gt;
+&lt;p&gt;使用imshow函数展示图像时，最后需要在程序中对图像展示窗口进行销毁，否则程序将无法正常终止，常用的销毁窗口的函数有下面两个：&lt;br&gt;
+(1) cv2.destroyWindow(windows_name) #销毁单个特定窗口&lt;br&gt;
+参数： 将要销毁的窗口的名字&lt;/p&gt;
+&lt;p&gt;(2) cv2.destroyAllWindows() #销毁全部窗口，无参数&lt;/p&gt;
+&lt;p&gt;窗口停留有两种方式：&lt;br&gt;
+(1) 让窗口停留一段时间然后自动销毁；&lt;br&gt;
+(2) 接收指定的命令，如接收指定的键盘敲击然后结束我们想要结束的窗口&lt;br&gt;
+以上两种情况都将使用cv2.waitKey函数， 首先产看函数定义：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cv2.waitKey(time_of_milliseconds)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;唯一参数 time_of_milliseconds是整数，可正可负也可是零，含义和操作也不同，分别对应上面说的两种情况&lt;/p&gt;
+&lt;p&gt;(1) time_of_milliseconds &amp;gt; 0 ：此时time_of_milliseconds表示时间，单位是毫秒，含义表示等待 time_of_milliseconds毫秒后图像将自动销毁，看以下示例&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#表示等待10秒后，将销毁所有图像
+if cv2.waitKey(10000):
+    cv2.destroyAllWindows()
+
+#表示等待10秒，将销毁窗口名称为&#39;origin image&#39;的图像窗口
+if cv2.waitKey(10000):
+    cv2.destroyWindow(&#39;origin image&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(2) time_of_milliseconds &amp;lt;= 0 ： 此时图像窗口将等待一个键盘敲击，接收到指定的键盘敲击便会进行窗口销毁。我们可以自定义等待敲击的键盘，通过下面的例子进行更好的解释&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#当指定waitKey(0) == 27时当敲击键盘 Esc 时便销毁所有窗口
+if cv2.waitKey(0) == 27:
+    cv2.destroyAllWindows()
+
+#当接收到键盘敲击A时，便销毁名称为&#39;origin image&#39;的图像窗口
+if cv2.waitKey(-1) == ord(&#39;A&#39;):
+    cv2.destroyWindow(&#39;origin image&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面是一个完整读取、展示、保存和图像销毁示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import cv2
+import imutils
+import numpy as np
+
+rgb_img = cv2.imread(&#39;E:/peking_rw/ocr_project/base_prehandle/img/cartoon.jpg&#39;)
+gray_img = cv2.cvtColor(rgb_img, cv2.COLOR_BGR2GRAY)
+cv2.imshow(&#39;origin image&#39;, imutils.resize(rgb_img, 800))
+cv2.imshow(&#39;gray image&#39;, imutils.resize(gray_img, 800))
+cv2.imwrite(&#39;rgb_img.jpg&#39;, rgb_img)
+cv2.imwrite(&#39;gray_img.png&#39;, gray_img)
+
+#等待一定时间自动销毁图像窗口
+#if cv2.waitKey(10000):
+#    cv2.destroyAllWindows()
+#if cv2.waitKey(10000):
+#    cv2.destroyWindow(&#39;origin image&#39;)
+
+#接收特定键盘销毁图像窗口
+#if cv2.waitKey(-1) == ord(&#39;A&#39;):
+#    cv2.destroyWindow(&#39;origin image&#39;)
+if cv2.waitKey(0) == 27:
+    cv2.destroyAllWindows()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;色彩空间变换函数&#34;&gt;色彩空间变换函数&lt;/h3&gt;
+&lt;p&gt;首先图像色彩空间变换函数定义：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cv2.cvtColor(input_image, flag)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数一： input_image表示将要变换色彩的图像ndarray对象&lt;br&gt;
+参数二： 表示图像色彩空间变换的类型，以下介绍常用的两种：&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;cv2.COLOR_BGR2GRAY：&lt;/em&gt; 表示将图像从BGR空间转化成灰度图，最常用&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;cv2.COLOR_BGR2HSV：&lt;/em&gt; 表示将图像从RGB空间转换到HSV空间&lt;/p&gt;
+&lt;p&gt;如果想查看参数flag的全部类型，可以执行以下程序便可查阅，总共有274种空间转换类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import cv2
+flags = [i for i in dir(cv2) if i.startswith(&#39;COLOR_&#39;)]
+print(flags)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;绘制函数&#34;&gt;绘制函数&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1、绘图简单图像&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于一个长宽分别为w、h的RGB彩色图像来说，它的每个像素值是由(B、G、R)的一个tuple组成，opencv-python中每个像素三个值的顺序是B、G、R，而对于灰度图像来说，每个像素对应的便只是一个整数，如果要把像素缩放到0、1，则灰度图像就是二值图像，0便是黑色，1便是白色。&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import cv2
+
+rgb_img = cv2.imread(&#39;E:/peking_rw/ocr_project/base_prehandle/img/cartoon.jpg&#39;)
+print(rgb_img.shape)     #(1200, 1600, 3)
+print(rgb_img[0, 0])     #[137 124  38]
+print(rgb_img[0, 0, 0])  #137
+
+gray_img = cv2.cvtColor(rgb_img, cv2.COLOR_BGR2GRAY)
+print(gray_img.shape)    #(1200, 1600)
+print(gray_img[0, 0])    #100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从上面我们可以看到彩色图像的高度height = 1200， 宽度w=1600且通道数为3， 像素(0， 0)的值是(137 124 38)，即R=137, G=124, B=38， 对于灰度图像来说便只是单通道的了&lt;/p&gt;
+&lt;p&gt;因此(0, 0, 0)便是代表一个黑色像素，(255, 255, 255)便是代表一个白色像素。这么想，B=0, G=0, R=0相当于关闭了颜色通道也就相当于无光照进入，所以图像整个是黑的，而(255, 255, 255)即B=255, G=255, R=255， 相当于打开了B、G、R所有通道光线全部进入，因此便是白色。&lt;/p&gt;
+&lt;p&gt;通过创建numpy的ndarray对象来创建任意的彩色图像和灰度图像，例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import cv2
+import numpy as np
+
+white_img = np.ones((512,512,3), np.uint8)
+white_img = 255*white_img
+cv2.imshow(&#39;white_img&#39;, white_img)
+if cv2.waitKey(0) == 27:
+    cv2.destroyAllWindows()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果图：&lt;/p&gt;
+&lt;p&gt;opencv中一些简单几何图像基本绘制函数，然后在上面白色的图像上进行添加新的图像物体&lt;/p&gt;
+&lt;p&gt;直线cv2.line、长方形cv2.rectangle、圆cv2.circle、椭圆cv2.ellipse、多边形cv2.polylines等集合图像绘制函数&lt;/p&gt;
+&lt;p&gt;它们的公共参数：&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;img：&lt;/em&gt; 表示需要进行绘制的图像对象ndarray&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;color：&lt;/em&gt; 表示绘制几何图形的颜色，采用BGR即上述说的(B、G、R)&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;thickness：&lt;/em&gt; 表示绘制几何图形中线的粗细，默认为1，对于圆、椭圆等封闭图像取-1时是填充图形内部&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;lineType ：&lt;/em&gt; 表示绘制几何图形线的类型，默认8-connected线是光滑的，当取cv2.LINE_AA时线呈现锯齿状&lt;/p&gt;
+&lt;p&gt;(1) cv2.line函数&lt;/p&gt;
+&lt;p&gt;直线绘制函数， 函数官方定义为：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cv2.line(image, starting, ending, color, thickness, lineType)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数image、color、thickness、lineType分别是上述公共定义，参数starting、ending分别表示线的起点像素坐标、终点像素坐标&lt;/p&gt;
+&lt;p&gt;(2) cv2.rectangle函数&lt;/p&gt;
+&lt;p&gt;长方形绘制函数，函数官方定义：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cv2.rectangle(image, top-left, bottom-right, color, thickness, lineType)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数image、color、thickness、lineType分别是上述公共定义，参数top-left、bottom-right分别表示长方形的左上角像素坐标、右下角像素坐标&lt;/p&gt;
+&lt;p&gt;(3) cv2.circle函数&lt;br&gt;
+圆形绘制函数，官方定义函数为：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cv2.circle(image, center, radius, color, thickness, lineType)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数image、color、thickness、lineType分别是上述公共定义，参数center、radius分别表示圆的圆心像素坐标、圆的半径长度，圆绘制函数中当参数thickness = -1 时绘制的是实心圆，当thickness &amp;gt;= 0 时绘制的是空心圆&lt;/p&gt;
+&lt;p&gt;(4) cv2.ellipse函数&lt;br&gt;
+椭圆绘制函数，官方定义为：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cv2.circle(image, center, (major-axis-length, minor-axis-length), angle, startAngle, endAngle, color, thickness, lineType)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;椭圆的参数较多，首先参数image、color、thickness、lineType分别是上述公共定义，椭圆绘制函数中当参数thickness = -1 时绘制的是实心椭圆，当thickness &amp;gt;= 0 时绘制的是空心椭圆，其他参数如下&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;center：&lt;/em&gt; 表示椭圆中心像素坐标&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;major-axis-length：&lt;/em&gt; 表示椭圆的长轴长度&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;minor-axis-length：&lt;/em&gt; 表示椭圆的短轴长度&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;angle：&lt;/em&gt; 表示椭圆在逆时针方向旋转的角度&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;startAngle：&lt;/em&gt; 表示椭圆从主轴向顺时针方向测量的椭圆弧的起始角度&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;endAngle：&lt;/em&gt; 表示椭圆从主轴向顺时针方向测量的椭圆弧的终止时角度&lt;/p&gt;
+&lt;p&gt;(5) cv2.polylines函数&lt;br&gt;
+多边形绘制函数，官方定义函数为：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cv2.polylines(image, [point-set], flag, color, thickness, lineType)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数image、color、thickness、lineType分别是上述公共定义，其他参数如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;[point-set]：&lt;/em&gt; 表示多边形点的集合，如果多边形有m个点，则便是一个m&lt;em&gt;1&lt;/em&gt;2的数组，表示共m个点&lt;br&gt;
+&lt;strong&gt;·&lt;/strong&gt; &lt;em&gt;flag：&lt;/em&gt; 当flag = True 时，则多边形是封闭的，当flag = False 时，则多边形只是从第一个到最后一个点连线组成的图像，没有封闭&lt;/p&gt;
+&lt;p&gt;现在我们将上面五种几何图像绘制到开始的白色图像上，观看效果：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;import cv2
+import numpy as np
+
+img = np.ones((512,512,3), np.uint8)
+img = 255*img
+img = cv2.line(img, (100,100), (400,400),(255, 0, 0), 5)
+img = cv2.rectangle(img,(200, 20),(400,120),(0,255,0),3)
+img = cv2.circle(img,(100,400), 50, (0,0,255), 2)
+img = cv2.circle(img,(250,400), 50, (0,0,255), 0)
+img = cv2.ellipse(img,(256,256),(100,50),0,0,180,(0, 255, 255), -1)
+pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
+img = cv2.polylines(img,[pts],True,(0, 0, 0), 2)
+
+cv2.imshow(&#39;img&#39;, img)
+if cv2.waitKey(0) == 27:
+    cv2.destroyAllWindows()
+&lt;/code&gt;&lt;/pre&gt;
+">OpenCV图片操作</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wenxc.github.io/post/zi-fu-chuan-cao-zuo/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;从文件里读取字符串踩过的坑。整理一些处理字符的细节，主要记录字符串拼接和分割时的需要注意的地方。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从txt文件里读取字符串常用函数readlines（）或者readline与for结合迭代构成字符串&lt;/p&gt;
+&lt;h3 id=&#34;除去空格&#34;&gt;除去空格&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data = &#39;&#39;
+with open(&#39;test.txt&#39;, &#39;r&#39;,encoding=&#39;utf-8&#39;) as f:
+  for line in f.readlines():
+    line = line.strip()
+    data += line
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里strip（）删除字符串首尾的空格，除此之外还有lstrip（）和rstrip（）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 删除字符串两边的空格
+print(data.strip()) # Hello World
+
+# 删除左边的空格
+print(data.lstrip()) # Hello World （只删除左边的空格）
+
+# 删除字符串右边的空格
+print(data.rstrip()) #  Hello World（只删除右边的空格）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不过这些函数无法除去字符中间的空格，如果需要可以使用替代的方法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data.replace(&#39; &#39;, &#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;读取文件时还会遇到空字符以及回车等字符，需要从数据中删除这些数据&lt;/p&gt;
+&lt;h3 id=&#34;除去回车&#34;&gt;除去回车&lt;/h3&gt;
+&lt;p&gt;在python中存在继承了 回车符\r 和 换行符\n 两种标记。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;\r&lt;/code&gt;和&lt;code&gt;\n&lt;/code&gt; 都是以前的那种打字机传承来的。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;\r&lt;/code&gt; 代表回车，也就是打印头归位，回到某一行的开头。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;\n&lt;/code&gt;代表换行，就是走纸，下一行。&lt;/p&gt;
+&lt;p&gt;linux只用&lt;code&gt;\n&lt;/code&gt;换行。&lt;/p&gt;
+&lt;p&gt;win下用&lt;code&gt;\r\n&lt;/code&gt;表示换行。&lt;/p&gt;
+&lt;p&gt;python中同样一句话：&lt;code&gt;print (u&#39;前面的内容\r只显示后面的内容&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;所以，在去除换行时，需要同时去除两者才行&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;除去列表中的空字符&#34;&gt;除去列表中的空字符&lt;/h3&gt;
+&lt;p&gt;在实际计算时空字符也会对结果产生影响&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;line = &amp;quot;f 1312/1425/1312 1/1/1 1310/1423/1310 1309/1422/1309 &amp;quot;
+line.replace(&amp;quot; &amp;quot;,&amp;quot;,&amp;quot;).split(&amp;quot;,&amp;quot;)
+[&#39;f&#39;, &#39;1312/1425/1312&#39;, &#39;1/1/1&#39;, &#39;1310/1423/1310&#39;, &#39;1309/1422/1309&#39;, &#39;&#39;]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在最后的结果里存在这样的空字符参与运算，导致结果错误，可以从列表中除去空字符&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;list1 = [&#39;122&#39;, &#39;2333&#39;, &#39;3444&#39;, &#39;&#39;, &#39;&#39;, None]
+a = list(filter(None, list1))  # 只能过滤空字符和None
+print(a)  
+# [&#39;122&#39;, &#39;2333&#39;, &#39;3444&#39;]
+
+# Python内建filter()函数 - 过滤list
+# filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素
+def not_empty(s):
+    return s and s.strip()
+ 
+list2 = [&#39;122&#39;, &#39;2333&#39;, &#39;3444&#39;, &#39; &#39;, &#39;422&#39;, &#39; &#39;, &#39;    &#39;, &#39;54&#39;, &#39; &#39;, &#39;&#39;, None, &#39;   &#39;]
+print(list(filter(not_empty, list2)))  
+[&#39;122&#39;, &#39;2333&#39;, &#39;3444&#39;, &#39;422&#39;, &#39;54&#39;]
+# 不仅可以过滤空字符和None而且可以过滤含有空格的字符
+&lt;/code&gt;&lt;/pre&gt;
+">字符串操作</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/"" data-c="

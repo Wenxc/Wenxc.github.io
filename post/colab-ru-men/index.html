@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="QuickNote">
 <meta name="theme-color" content="#000">
-<title>Hexo博客使用经验 | Wenxc&#39;s Blog</title>
+<title>Colab入门 | Wenxc&#39;s Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1604969632723">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="Hexo博客使用经验" />
-  <meta name="keywords" content="个人博客,Hexo" />
+  <meta name="description" content="Colab入门" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -235,15 +235,13 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5">图片插入</a></li>
-<li><a href="#%E5%9B%BE%E5%BA%8A">图床</a></li>
-<li><a href="#%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87">本地图片</a></li>
-<li><a href="#live2d">live2d</a></li>
-<li><a href="#%E7%BD%91%E7%AB%99%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C">网站数据统计不能正常工作</a></li>
-</ul>
-</li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F">启动方式</a></li>
+<li><a href="#notebook%E9%85%8D%E7%BD%AE">Notebook配置</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6%E5%92%8C%E5%85%B6%E4%BB%96%E5%8C%85">安装深度学习框架和其他包</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C">其他操作</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
 </ul>
 </li>
 </ul>
@@ -511,8 +509,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">
-      Hexo博客使用经验
+    <a class="post-title-link" href="https://wenxc.github.io/post/colab-ru-men/">
+      Colab入门
     </a>
   </h1>
   <div class="post-meta">
@@ -520,84 +518,81 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-09-03 21:53:01">2019-09-03</span>
+      <span class="publish-time" data-t="2020-11-10 08:52:28">2020-11-10</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://wenxc.github.io/tag/c7_OrNtwK/">
-        <span>个人博客</span>
-      </a>、
-      
-      
-      
-      <a href="https://wenxc.github.io/tag/NRl0Q0Al9/">
-        <span>Hexo</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>590<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1020<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
               <blockquote>
-<p>hexo博客编辑过程中遇到的问题以及解决办法</p>
+<p>记录一下Colab的一些基础的问题及设置。距Colab开放已两年之久，配置时遇到一些与之前的教程不符的地方，进行了一些改进。主要参考https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d</p>
 </blockquote>
-<!--- more --->
-<h3 id="图片插入">图片插入</h3>
-<blockquote>
-<p>图片资源的路径一直是一个令人头疼的问题，有时候即使在本地浏览器浏览图片正常，但部署到github后也会找不到图片。经过尝试，找到2种解决图片路径问题的方法。</p>
-</blockquote>
-<h3 id="图床">图床</h3>
-<p>所谓图床，就是储存图片的服务器，支持创建图片的对外链接地址便于引用。使用时只要引入图片的绝对地址就可以，方便简单。</p>
-<p>图床分为免费和收费的。无免费图床存在隐患，随时可能停止服务；收费图床稳定一些，不管从服务还是稳定性上，都更推荐收费图床。</p>
-<p>目前大家推荐比较多的国内图床：</p>
+<p>[TOC]</p>
+<h2 id="简介">简介</h2>
+<p>Colab（Colaboratory）是谷歌提供的一款基于Jupyter Notebook开发的免费深度学习云平台，尽管只是开放Notebook这样的交互式Python环境，依然可以通过魔法命令和shell命令执行Python脚本（使用和Jupyter Notebook一致，可以参照<a href="https://blog.csdn.net/zhouchen1998/article/details/100126865">Jupyter教程</a>）。同时，Colab配合谷歌其他的应用如Google Drive（谷歌云盘）等共同使用。它预装了几乎所有主流的机器学习和深度学习框架以及常用的工具库，深度学习框架以TensorFlow为主，其他框架需要自行安装。</p>
+<h2 id="启动方式">启动方式</h2>
+<p>Colab主要有两种启动方式，一种是从Colab的官网主要打开Notebook（ipynb后缀文件），另一种是通过打开自己的Google Drive并关联Colaboratory直接从云盘打开。（<em>个人喜欢后一种方式量，但是两种方式差别不大但也各有局限性</em>）。</p>
+<p>第一种方式，Google搜索Colab或者访问<a href="https://colab.research.google.com/">官网地址</a>。如果你是第一次使用，只能看到一个完全用Jupyter Notebook写成的Welcome笔记本，你的笔记本可以来自硬盘（自行创建，如果直接新建notebook会在Google云盘中自动创建名为<code>Colab Notebooks</code>的文件夹用于默认的Notebook文件存放路径），也可以来自Github（需要授权）或者当即上传（上传的位置决定是否会在时长到达是释放删除）。</p>
+<p>第二种方式，没有太大扩展空间但是比较实用。在谷歌云盘存放Notebook的文件夹中新建Notebook使用Colaboratory打开即可。这种方式就不能打开Github等仓库Notebook。</p>
+<h2 id="notebook配置">Notebook配置</h2>
+<p>打开一个新建的Notebook，会看到Colab的工作界面。</p>
+<p>有一些必要的配置内容，如文件名（点击文件名处即可修改，修改后Google云盘中的Notebook文件名会相应同步修改），GPU环境（默认使用CPU打开，点击导航栏的修改-&gt;笔记本设置-&gt;硬件加速器-&gt;GPU即可，点击保存会重新开启一个新的GPU的docker环境作为该Notebook的后端）以及编辑器环境。</p>
+<p>配置后测试：！nvidia-smi  #查看CUDA和显存</p>
+<p>挂载谷歌云盘：使用云盘的主要目的是保存程序运行的结果到云盘，避免colab自动清除导致数据丢失。</p>
+<pre><code class="language-python">from google.colab import drive
+drive.mount('/content/drive/')
+</code></pre>
+<p>运行后结果</p>
+<pre><code class="language-python">Mounted at /content/drive/
+</code></pre>
+<p>也可以手动挂载。</p>
+<h2 id="安装深度学习框架和其他包">安装深度学习框架和其他包</h2>
+<p>在官方教程中已经有Keras、Tensorflow、Pytorch的安装方法，我平时使用Pytorch比较多，所以这里给出我的Pytorch安装代码。</p>
+<pre><code class="language-python">!pip install torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+</code></pre>
+<p>具体的pytorch版本选择可以在pytorch官网查看对应的版本。</p>
+<pre><code class="language-python">import torch
+print(torch.__version__)
+</code></pre>
+<p>输出</p>
+<pre><code class="language-python">1.7.0+cu101
+</code></pre>
+<h2 id="其他操作">其他操作</h2>
 <ul>
-<li>七牛云储存<br>
-新注册用户可免费使用 10G 存储空间。</li>
-<li>极简图床<br>
-其实也是依赖七牛云储存账号的。</li>
+<li>
+<p>!ls  !cd  !wegt</p>
+</li>
+<li>
+<p>!git clone url</p>
+</li>
+<li>
+<p>!python train.py</p>
+<p>et.al</p>
+</li>
 </ul>
-<h3 id="本地图片">本地图片</h3>
-<p>本地存放图片的方法经过修改以后也是可以完美使用。</p>
-<p>首先修改 <em>站点配置文件</em></p>
-<p><code>post_asset_folder: true</code></p>
-<p>开启资源文件夹功能，该功能支持用户通过相对路径标签引用资源。</p>
-<p>再执行 <code>hexo new &lt;title&gt;</code> 创建一篇名为title新的文章，在 source/_posts 下自动生成了一个和 md 文件同名的目录，这就是用于存放与文章有关的图片文件夹。</p>
-<p>在根目录下执行：</p>
-<p><code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code></p>
-<p>然后在 markdown 中插入图片：</p>
-<p><code>! [图片描述] (title/image.png)</code></p>
-<p>生成的页面中图片引用路径:</p>
-<p><code>&lt;img src=&quot;/YYYY/MM/DD/title/image.png&quot; alt=&quot;图片描述&quot;&gt;</code></p>
-<p>至此，用 markdown 实现本地图片插入。</p>
-<h3 id="live2d">live2d</h3>
-<p>next自带主题的看板娘关闭</p>
-<p>主题自带的看板娘存储路径与自定义的大不相同，所以 直接<code>npm uninstall hexo-helper-live2d</code></p>
-<h3 id="网站数据统计不能正常工作">网站数据统计不能正常工作</h3>
-<p>这是由于busuanzi(不蒜子)的网址更新,导致了使用Hexo Next主题的统计浏览数失效。</p>
-<p>解决方法:<br>
-打开\themes\next\layout_third-party\analytics文件夹<br>
-编辑 busuanzi-counter.swig<br>
-将src=“https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js”<br>
-修改为src=“https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js”</p>
-<p>busuanzi就能正常工作.</p>
+<h2 id="总结">总结</h2>
+<ol>
+<li>可以把Colab看成是<strong>一台带有GPU的Ubuntu虚拟机</strong>，只不过我们只能用命令行的方式操作它。你可以选择执行系统命令，亦或是直接编写运行python代码。</li>
+<li>挂载完Google Drive，会在虚拟机里生成一个drive文件夹，直接将Google Drive当成是<strong>一块硬盘</strong>即可。访问drive文件夹里的文件，就是在访问你的Google Drive里的文件。</li>
+<li>Colab最多连续使用12小时，超过时间系统会强制掐断正在运行的程序并收回占用的虚拟机。（好像再次连接到虚拟机后，虚拟机是被清空的状态，需要重新配置和安装库等等）</li>
+<li>请使用科学上网方式</li>
+</ol>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d">官方教程</a><br>
+<a href="https://research.google.com/colaboratory/faq.html">官方FAQ</a><br>
+https://www.cnblogs.com/smiler/p/6939913.html<br>
+https://www.cnblogs.com/oxspirt/p/6294754.html</p>
 
             </div>
             
@@ -610,7 +605,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/" title="Hexo博客使用经验">https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/</a>
+      <a href="https://wenxc.github.io/post/colab-ru-men/" title="Colab入门">https://wenxc.github.io/post/colab-ru-men/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -619,23 +614,15 @@
   </ul>
   <div class="tags">
     
-      <a href="https://wenxc.github.io/tag/c7_OrNtwK/"># 个人博客</a>
-    
-      <a href="https://wenxc.github.io/tag/NRl0Q0Al9/"># Hexo</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Python调用动态链接库DLL学习笔记" href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">Python调用动态链接库DLL学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Python调用动态链接库DLL学习笔记" href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Python第三方库制作" href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/">Python第三方库制作</a>
-        <a class="nav-mobile-next" title="Python第三方库制作" href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/">下一篇</a>
+        <a class="nav-pc-next" title="pathlib 使用教程" href="https://wenxc.github.io/post/pathlib-shi-yong-jiao-cheng/">pathlib 使用教程</a>
+        <a class="nav-mobile-next" title="pathlib 使用教程" href="https://wenxc.github.io/post/pathlib-shi-yong-jiao-cheng/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

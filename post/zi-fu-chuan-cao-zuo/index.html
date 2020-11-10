@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="QuickNote">
 <meta name="theme-color" content="#000">
-<title>Hexo博客使用经验 | Wenxc&#39;s Blog</title>
+<title>字符串操作 | Wenxc&#39;s Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1604969632723">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="Hexo博客使用经验" />
-  <meta name="keywords" content="个人博客,Hexo" />
+  <meta name="description" content="字符串操作" />
+  <meta name="keywords" content="Python" />
 </head>
 
 <body>
@@ -237,11 +237,9 @@
 <ul>
 <li>
 <ul>
-<li><a href="#%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5">图片插入</a></li>
-<li><a href="#%E5%9B%BE%E5%BA%8A">图床</a></li>
-<li><a href="#%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87">本地图片</a></li>
-<li><a href="#live2d">live2d</a></li>
-<li><a href="#%E7%BD%91%E7%AB%99%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C">网站数据统计不能正常工作</a></li>
+<li><a href="#%E9%99%A4%E5%8E%BB%E7%A9%BA%E6%A0%BC">除去空格</a></li>
+<li><a href="#%E9%99%A4%E5%8E%BB%E5%9B%9E%E8%BD%A6">除去回车</a></li>
+<li><a href="#%E9%99%A4%E5%8E%BB%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%A9%BA%E5%AD%97%E7%AC%A6">除去列表中的空字符</a></li>
 </ul>
 </li>
 </ul>
@@ -511,8 +509,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">
-      Hexo博客使用经验
+    <a class="post-title-link" href="https://wenxc.github.io/post/zi-fu-chuan-cao-zuo/">
+      字符串操作
     </a>
   </h1>
   <div class="post-meta">
@@ -520,7 +518,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-09-03 21:53:01">2019-09-03</span>
+      <span class="publish-time" data-t="2019-11-12 08:21:28">2019-11-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -529,14 +527,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://wenxc.github.io/tag/c7_OrNtwK/">
-        <span>个人博客</span>
-      </a>、
-      
-      
-      
-      <a href="https://wenxc.github.io/tag/NRl0Q0Al9/">
-        <span>Hexo</span>
+      <a href="https://wenxc.github.io/tag/sMIqAF0gj/">
+        <span>Python</span>
       </a>
       
       
@@ -550,54 +542,71 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>590<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>596<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
               <blockquote>
-<p>hexo博客编辑过程中遇到的问题以及解决办法</p>
+<p>从文件里读取字符串踩过的坑。整理一些处理字符的细节，主要记录字符串拼接和分割时的需要注意的地方。</p>
 </blockquote>
-<!--- more --->
-<h3 id="图片插入">图片插入</h3>
-<blockquote>
-<p>图片资源的路径一直是一个令人头疼的问题，有时候即使在本地浏览器浏览图片正常，但部署到github后也会找不到图片。经过尝试，找到2种解决图片路径问题的方法。</p>
-</blockquote>
-<h3 id="图床">图床</h3>
-<p>所谓图床，就是储存图片的服务器，支持创建图片的对外链接地址便于引用。使用时只要引入图片的绝对地址就可以，方便简单。</p>
-<p>图床分为免费和收费的。无免费图床存在隐患，随时可能停止服务；收费图床稳定一些，不管从服务还是稳定性上，都更推荐收费图床。</p>
-<p>目前大家推荐比较多的国内图床：</p>
-<ul>
-<li>七牛云储存<br>
-新注册用户可免费使用 10G 存储空间。</li>
-<li>极简图床<br>
-其实也是依赖七牛云储存账号的。</li>
-</ul>
-<h3 id="本地图片">本地图片</h3>
-<p>本地存放图片的方法经过修改以后也是可以完美使用。</p>
-<p>首先修改 <em>站点配置文件</em></p>
-<p><code>post_asset_folder: true</code></p>
-<p>开启资源文件夹功能，该功能支持用户通过相对路径标签引用资源。</p>
-<p>再执行 <code>hexo new &lt;title&gt;</code> 创建一篇名为title新的文章，在 source/_posts 下自动生成了一个和 md 文件同名的目录，这就是用于存放与文章有关的图片文件夹。</p>
-<p>在根目录下执行：</p>
-<p><code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code></p>
-<p>然后在 markdown 中插入图片：</p>
-<p><code>! [图片描述] (title/image.png)</code></p>
-<p>生成的页面中图片引用路径:</p>
-<p><code>&lt;img src=&quot;/YYYY/MM/DD/title/image.png&quot; alt=&quot;图片描述&quot;&gt;</code></p>
-<p>至此，用 markdown 实现本地图片插入。</p>
-<h3 id="live2d">live2d</h3>
-<p>next自带主题的看板娘关闭</p>
-<p>主题自带的看板娘存储路径与自定义的大不相同，所以 直接<code>npm uninstall hexo-helper-live2d</code></p>
-<h3 id="网站数据统计不能正常工作">网站数据统计不能正常工作</h3>
-<p>这是由于busuanzi(不蒜子)的网址更新,导致了使用Hexo Next主题的统计浏览数失效。</p>
-<p>解决方法:<br>
-打开\themes\next\layout_third-party\analytics文件夹<br>
-编辑 busuanzi-counter.swig<br>
-将src=“https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js”<br>
-修改为src=“https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js”</p>
-<p>busuanzi就能正常工作.</p>
+<p>从txt文件里读取字符串常用函数readlines（）或者readline与for结合迭代构成字符串</p>
+<h3 id="除去空格">除去空格</h3>
+<pre><code class="language-python">data = ''
+with open('test.txt', 'r',encoding='utf-8') as f:
+  for line in f.readlines():
+    line = line.strip()
+    data += line
+</code></pre>
+<p>这里strip（）删除字符串首尾的空格，除此之外还有lstrip（）和rstrip（）</p>
+<pre><code class="language-python"># 删除字符串两边的空格
+print(data.strip()) # Hello World
+
+# 删除左边的空格
+print(data.lstrip()) # Hello World （只删除左边的空格）
+
+# 删除字符串右边的空格
+print(data.rstrip()) #  Hello World（只删除右边的空格）
+</code></pre>
+<p>不过这些函数无法除去字符中间的空格，如果需要可以使用替代的方法</p>
+<pre><code class="language-python">data.replace(' ', '')
+</code></pre>
+<p>读取文件时还会遇到空字符以及回车等字符，需要从数据中删除这些数据</p>
+<h3 id="除去回车">除去回车</h3>
+<p>在python中存在继承了 回车符\r 和 换行符\n 两种标记。</p>
+<p><code>\r</code>和<code>\n</code> 都是以前的那种打字机传承来的。</p>
+<p><code>\r</code> 代表回车，也就是打印头归位，回到某一行的开头。</p>
+<p><code>\n</code>代表换行，就是走纸，下一行。</p>
+<p>linux只用<code>\n</code>换行。</p>
+<p>win下用<code>\r\n</code>表示换行。</p>
+<p>python中同样一句话：<code>print (u'前面的内容\r只显示后面的内容')</code></p>
+<p>所以，在去除换行时，需要同时去除两者才行</p>
+<pre><code class="language-python">data.replace('\n', '').replace('\r', '')
+</code></pre>
+<h3 id="除去列表中的空字符">除去列表中的空字符</h3>
+<p>在实际计算时空字符也会对结果产生影响</p>
+<pre><code class="language-python">line = &quot;f 1312/1425/1312 1/1/1 1310/1423/1310 1309/1422/1309 &quot;
+line.replace(&quot; &quot;,&quot;,&quot;).split(&quot;,&quot;)
+['f', '1312/1425/1312', '1/1/1', '1310/1423/1310', '1309/1422/1309', '']
+
+</code></pre>
+<p>在最后的结果里存在这样的空字符参与运算，导致结果错误，可以从列表中除去空字符</p>
+<pre><code class="language-python">list1 = ['122', '2333', '3444', '', '', None]
+a = list(filter(None, list1))  # 只能过滤空字符和None
+print(a)  
+# ['122', '2333', '3444']
+
+# Python内建filter()函数 - 过滤list
+# filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素
+def not_empty(s):
+    return s and s.strip()
+ 
+list2 = ['122', '2333', '3444', ' ', '422', ' ', '    ', '54', ' ', '', None, '   ']
+print(list(filter(not_empty, list2)))  
+['122', '2333', '3444', '422', '54']
+# 不仅可以过滤空字符和None而且可以过滤含有空格的字符
+</code></pre>
 
             </div>
             
@@ -610,7 +619,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/" title="Hexo博客使用经验">https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/</a>
+      <a href="https://wenxc.github.io/post/zi-fu-chuan-cao-zuo/" title="字符串操作">https://wenxc.github.io/post/zi-fu-chuan-cao-zuo/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -619,23 +628,21 @@
   </ul>
   <div class="tags">
     
-      <a href="https://wenxc.github.io/tag/c7_OrNtwK/"># 个人博客</a>
-    
-      <a href="https://wenxc.github.io/tag/NRl0Q0Al9/"># Hexo</a>
+      <a href="https://wenxc.github.io/tag/sMIqAF0gj/"># Python</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Python调用动态链接库DLL学习笔记" href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">Python调用动态链接库DLL学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Python调用动态链接库DLL学习笔记" href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">上一篇</a>
+        <a class="nav-pc-next" title="OpenCV图片操作" href="https://wenxc.github.io/post/opencv-tu-pian-cao-zuo/">OpenCV图片操作</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="OpenCV图片操作" href="https://wenxc.github.io/post/opencv-tu-pian-cao-zuo/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Python第三方库制作" href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/">Python第三方库制作</a>
-        <a class="nav-mobile-next" title="Python第三方库制作" href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/">下一篇</a>
+        <a class="nav-pc-next" title="数据结构学习笔记" href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/">数据结构学习笔记</a>
+        <a class="nav-mobile-next" title="数据结构学习笔记" href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
