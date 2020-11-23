@@ -9,7 +9,7 @@
 <meta name="description" content="QuickNote">
 <meta name="theme-color" content="#000">
 <title>W-Blog</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Wenxc/wenxc.github.io@master/favicon.ico?v=1604992463795">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Wenxc/wenxc.github.io@master/favicon.ico?v=1606098938709">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wenxc/wenxc.github.io@master/media/css/pisces.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wenxc/wenxc.github.io@master/media/fonts/font-awesome.css">
 <link
@@ -193,19 +193,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">10</span>
+        <span class="site-item-stat-count">11</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -253,6 +253,12 @@
       
       
       
+      
+      
+      
+      
+      
+      
       <a href="https://wenxc.github.io/post/opencv-tu-pian-cao-zuo/">
         <div class="motion-warpper">
           <div class="tag-post-node">
@@ -263,8 +269,6 @@
           </div>
         </div>
       </a>
-      
-      
       
       
       
@@ -745,6 +749,125 @@ src/stuff/submodule.py
 
 &lt;/code&gt;&lt;/pre&gt;
 ">pathlib 使用教程</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wenxc.github.io/post/shen-ru-li-jie-la-ge-lang-ri-cheng-zi-fa-he-kkt-tiao-jian/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;拉格朗日乘子法（Lagrange Multiplier) 和KKT条件是求取有约束条件的优化问题的非常常用而且重要的方法。之前学习的时候，只是直接应用两个方法，没有深入理解为什么要这样去求取最优值呢？在查找一些资料后，理解整理如下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;什么是拉格朗日乘子法和kkt条件&#34;&gt;什么是拉格朗日乘子法和KKT条件&lt;/h2&gt;
+&lt;p&gt;通常我们需要求解的最优化问题有如下几类：&lt;/p&gt;
+&lt;p&gt;(i) 无约束优化问题，可以写为:&lt;/p&gt;
+&lt;p&gt;​                                      min f(x);&lt;/p&gt;
+&lt;p&gt;(ii) 有等式约束的优化问题，可以写为:&lt;/p&gt;
+&lt;p&gt;​                                       min f(x),&lt;/p&gt;
+&lt;p&gt;​                                       s.t. h&lt;em&gt;i&lt;/em&gt;(x) = 0; i =1, ..., n&lt;/p&gt;
+&lt;p&gt;(iii) 有不等式约束的优化问题，可以写为：&lt;/p&gt;
+&lt;p&gt;​                                      min f(x),&lt;/p&gt;
+&lt;p&gt;​                                      s.t. g&lt;em&gt;i&lt;/em&gt;(x) &amp;lt;= 0; i =1, ..., n&lt;/p&gt;
+&lt;p&gt;​                                             h&lt;em&gt;j&lt;/em&gt;(x) = 0; j =1, ..., m&lt;/p&gt;
+&lt;p&gt;对于第(i)类的优化问题，常常使用的方法就是Fermat定理，即使用求取f(x)的导数，然后令其为零，可以求得候选最优值，再在这些候选值中验证；如果是凸函数，可以保证是最优解。&lt;/p&gt;
+&lt;p&gt;对于第(ii)类的优化问题，常常使用的方法就是拉格朗日乘子法，即把等式约束h&lt;em&gt;i&lt;/em&gt;(x)用一个系数与f(x)写为一个式子L(a, x) = f(x) + a*h(x)，称为拉格朗日函数，系数a称为拉格朗日乘子。通过拉格朗日函数对各个变量求导，令其为零，可以求得候选值集合，然后验证求得最优值。&lt;/p&gt;
+&lt;p&gt;对于第(iii)类的优化问题，常常使用的方法就是KKT条件。同样地，把所有的等式、不等式约束与f(x)写为一个式子L(a, b, x)= f(x) + a&lt;em&gt;g(x)+b&lt;/em&gt;h(x)，也叫拉格朗日函数，系数也称拉格朗日乘子。所谓KKT条件就是说优化问题求取的最优值必须满足以下条件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L(a, b, x)对x求导为零；&lt;/li&gt;
+&lt;li&gt;h(x) =0;&lt;/li&gt;
+&lt;li&gt;a*g(x) = 0;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;求取这三个等式之后能得到候选最优值。其中第三个式子非常有趣，因为g(x)&amp;lt;=0，如果要满足这个等式，必须a=0或者g(x)=0. 这是SVM的很多重要性质的来源，如支持向量的概念。&lt;/p&gt;
+&lt;h2 id=&#34;为什么拉格朗日乘子法-和kkt条件能够得到最优值&#34;&gt;为什么拉格朗日乘子法 和KKT条件能够得到最优值？&lt;/h2&gt;
+&lt;p&gt;以维基百科给出的拉格朗日乘子法为例，假设目标函数z = f(x，y),  z取不同的值，则目标函数投影在xOy平面（曲面）上，即成为等高线，如下图，虚线是等高线。假设约束g(x，y)=0，在xOy平面或者曲面上是一条曲线，假设g(x，y)与等高线相交，交点就是同时满足等式约束条件和目标函数的可行域的值，但肯定不是最优值，因为相交意味着肯定还存在其它的等高线在该条等高线的内部或者外部，使得新的等高线与目标函数的交点的值更大或者更小，只有到等高线与目标函数的曲线相切的时候，可能取得最优值，即等高线和目标函数的曲线在该点的法向量必须在一条直线上，所以最优值必须满足：f(x，y)的梯度 = a* g(x，y)的梯度，a是常数，表示左右两边共线。这个等式就是L(a,x)对参数求导的结果。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://i.loli.net/2020/11/23/8weFJpos1mOuYLE.jpg&#34; alt=&#34;001.jpg&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;假设现在有不等式约束g ( x , y ) − c ≤ 0，五角星区域是我们满足不等式约束的区域。此时我们仍然用拉格朗日乘法将对不等式约束引入拉格朗日乘法。习惯上对等式约束使用β 乘子，对不等式约束使用α 乘子 L ( x , y , λ ) = f ( x , y ) + λ ⋅ ( g ( x , y ) − c ) 。&lt;br&gt;
+我们仍然按照三步求导的战略，仍旧可以得到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;f ′ ( x ) = λ g ′ ( x )&lt;/li&gt;
+&lt;li&gt;f ′ ( y ) = λ g ′ ( y ) g ( x , y ) − c = 0&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;g&lt;/em&gt;(&lt;em&gt;x&lt;/em&gt;,&lt;em&gt;y&lt;/em&gt;)−&lt;em&gt;c&lt;/em&gt;=0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://i.loli.net/2020/11/23/jvDyGgRdZNTVe5H.png&#34; alt=&#34;002.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;但是这和等式约束有什么区别在于要想最小值点落在约束不等式所在的曲线上，那么原函数的梯度和约束曲线的梯度一定要是反方向的。&lt;br&gt;
+也就是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;f ′ ( x ) + λ g ′ ( x ) = 0&lt;/li&gt;
+&lt;li&gt;f ′ ( y ) + λ g ′ ( y ) = 0&lt;/li&gt;
+&lt;li&gt;s . t . λ ≥ 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说如果最优解落在约束曲线上，除了原函数在该点的法向量能被约束曲线线性表出外，原函数的法向量的符号还得和约束曲线们的法向量符号相反，即切点约束条件区域扩大的方向与原函数增大的方向相同。&lt;/p&gt;
+&lt;p&gt;这就引出&lt;strong&gt;KKT条件&lt;/strong&gt;之大部分（除了条件d）：&lt;br&gt;
+∇ x L ( x ∗ , α ∗ , β ∗ ) = 0 ( a )&lt;/p&gt;
+&lt;p&gt;∇ α L ( x ∗ , α ∗ , β ∗ ) = 0 ( b )&lt;/p&gt;
+&lt;p&gt;∇ β L ( x ∗ , α ∗ , β ∗ ) = 0 ( c )&lt;/p&gt;
+&lt;p&gt;α i ∗ c i ( x ∗ ) = 0 , i = 1 , 2 , ⋯  k ( d )&lt;/p&gt;
+&lt;p&gt;c i ( x ∗ ) ≤ 0 , i = 1 , 2 , ⋯  k ( e )&lt;/p&gt;
+&lt;p&gt;α i ∗ ≥ 0 , i = 1 , 2 , ⋯k ( f )&lt;/p&gt;
+&lt;p&gt;h j ( x ∗ ) = 0 , j = 1 , 2 , ⋯  l ( g )&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;条件(a)为原函数在切点的法向量被约束曲线在该点的法向量线性表出&lt;/li&gt;
+&lt;li&gt;（b）(c） 表示最优解落在约束条件所在的曲线上&lt;/li&gt;
+&lt;li&gt;（e）为约束条件的表达形式，都是小于等于的形式&lt;/li&gt;
+&lt;li&gt;（f）使得原函数的法向量与约束曲线的法向量在切点处异号&lt;/li&gt;
+&lt;li&gt;（g）为等式约束的形式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而对于多个不等式约束：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://i.loli.net/2020/11/23/ZVTlipqr8eoafkw.png&#34; alt=&#34;003&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;由上图可知，&lt;em&gt;g&lt;/em&gt;3函数在约束时没有起任何作用，但是在上面的KKT条件中&lt;em&gt;g&lt;/em&gt;3和其对应λ 的系数都参与了运算，如何消除其作用呢，这就引出了KKT的最后一个条件d：&lt;br&gt;
+α i ∗ c i ( x ∗ ) = 0 , i = 1 , 2 , ⋯  k ( d )&lt;br&gt;
+最优解在约束曲线上时，其表达式为0，若不在某条约束曲线上，为了使最后的结果为0，其系数必须为0，从而使不产生作用的曲线在计算时不产生作用。&lt;strong&gt;该条件也称为KKT的对偶互补条件。&lt;/strong&gt;&lt;br&gt;
+到此为止我们推出了KKT的所有条件。&lt;/p&gt;
+&lt;h2 id=&#34;拉格朗日对偶性&#34;&gt;拉格朗日对偶性&lt;/h2&gt;
+&lt;p&gt;原始问题，求在等式和不等式约束条件下的函数最小值：&lt;/p&gt;
+&lt;p&gt;​														&lt;img src=&#34;https://i.loli.net/2020/11/23/5EH9rP3N2sUaz1F.png&#34; alt=&#34;004&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为了求解原始问题，我们首先引入广义拉格朗日函数(generalized Lagrange function)：&lt;/p&gt;
+&lt;p&gt;​									&lt;img src=&#34;https://i.loli.net/2020/11/23/gRspnaLbdkGFu9f.png&#34; alt=&#34;005.png&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;f ( x )是可微的&lt;/li&gt;
+&lt;li&gt;α i , β j 成为拉格朗日乘子且α i ≥ 0&lt;/li&gt;
+&lt;li&gt;c i ( x ) ≤ 0&lt;/li&gt;
+&lt;li&gt;h i = 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过拉格朗日乘法，把约束条件加上新的变量构成了一个新的函数，虽然新的函数中变量变多了，但是没有了限制条件。&lt;br&gt;
+考虑x的函数（下标P表示原始问题）：&lt;/p&gt;
+&lt;p&gt;​																&lt;img src=&#34;https://i.loli.net/2020/11/23/wbhSTUg2aPFK8Nn.png&#34; alt=&#34;007&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这个max的意义在于，我们将所有的x样本根据取值的不同分成了满足条件和不满足条件的两部分，用函数的取值代替了原来的约束条件&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;现在这个θ*&lt;em&gt;P*(&lt;em&gt;x&lt;/em&gt;&lt;/em&gt;) 取最大，只要根据x的取值情况来调整其系数α &lt;em&gt;β&lt;/em&gt; 即可。x的取值情况有两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;满足原始问题的约束，这种情况下c i ( x ) ≤ 0 ,h j ( x ) = 0 ,并且α i ≥ 0 ，那我们只要让c i 的拉格朗日系数α为0，就能得到最大的结果f*(&lt;em&gt;x&lt;/em&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不满足原始问题的约束，这种情况下要么 c i ( x ) &amp;gt; 0 或者h j ( x ) ≠ 0,那我们就能通过改变α β 使得 θ**P*(&lt;em&gt;&lt;strong&gt;x&lt;/strong&gt;&lt;/em&gt;)取到正无穷。&lt;/p&gt;
+&lt;p&gt;所以我们就有如下的式子：&lt;br&gt;
+&lt;img src=&#34;https://i.loli.net/2020/11/23/lYKgwJ2zyGvhMcq.png&#34; alt=&#34;008&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;再考虑极小化问题：&lt;/p&gt;
+&lt;p&gt;​														&lt;img src=&#34;https://i.loli.net/2020/11/23/RZn8tjfSCB9FTH6.png&#34; alt=&#34;009&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这个问题的解和原问题是等价的，即它和原始问题（带有约束条件的f(x)最小化问题）有着相同的解。因为对 θ P*(&lt;em&gt;&lt;strong&gt;x&lt;/strong&gt;&lt;/em&gt;)取最小值，就是对f*(*x)取最小值。&lt;/p&gt;
+&lt;p&gt;如果我们定义原始问题的最优解为p ∗ ，那么我们也有&lt;br&gt;
+&lt;em&gt;p&lt;/em&gt;∗=&lt;em&gt;x&lt;/em&gt;min &lt;em&gt;θ**P&lt;/em&gt;(&lt;em&gt;x&lt;/em&gt;)&lt;br&gt;
+到这里，我们就将原来带有约束条件的极小化问题，变成了不带约束条件的极小极大问题。到这一步我们还是无法求解，所以我们引入对偶问题，将极小极大问题转化为极大极小问题。&lt;/p&gt;
+&lt;h2 id=&#34;对偶问题&#34;&gt;对偶问题&lt;/h2&gt;
+&lt;p&gt;定义：&lt;br&gt;
+&lt;img src=&#34;https://i.loli.net/2020/11/23/qypsIkwaHPzj5VJ.png&#34; alt=&#34;010.png&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+​																		&lt;br&gt;
+之前我们是先求极大值，再求极小值，先求极大值的好处是可以根据结果将数据分为满足条件和不满足条件的两部分，然后再对结果求最小，即变成了对满足条件的x求最小值还原了原始问题。&lt;/p&gt;
+&lt;p&gt;现在我们反过来，先求极小值再求极大值，将该问题成为原始问题的对偶问题，定义对偶问题的最优值：&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;d&lt;/em&gt;∗=&lt;em&gt;α&lt;/em&gt;,&lt;em&gt;β&lt;/em&gt;max  &lt;em&gt;θ&lt;/em&gt;D*(&lt;em&gt;α&lt;/em&gt;,*β)&lt;/p&gt;
+&lt;p&gt;原始问题先固定x，求最优化（极大化）的α β 的解，再确定x（通过极小化）&lt;br&gt;
+而对偶问题是先固定α ,β ，求最优化（极小化）的x的解，在确定α,β（通过极大化）&lt;/p&gt;
+&lt;h3 id=&#34;原始问题与对偶问题的关系&#34;&gt;原始问题与对偶问题的关系&lt;/h3&gt;
+&lt;p&gt;我将原始问题的最优解，转化为对偶问题的最优解，如果这两个解是等价的，那么解对偶问题最优解就是我们需要的原始问题的最优解。&lt;br&gt;
+若原始问题和对偶问题都有最优值，则：&lt;br&gt;
+&lt;img src=&#34;https://i.loli.net/2020/11/23/BZjc7bJdxtOhpHi.png&#34; alt=&#34;zuiyou.png&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+证明：&lt;br&gt;
+对于任意的x , α , β 有：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://i.loli.net/2020/11/23/HJf1ad4CNWiOluB.png&#34; alt=&#34;zuiyouzhengming.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;因为上述式子是在任意条件下的x , α , β，最大最小是任意条件中的特殊情况，所以上述结论得证。&lt;/p&gt;
+&lt;p&gt;对偶问题的解小于等于原始问题的解 d ∗ ≤ p ∗ 。只有当等号成立的时候我们才能通过对偶问题来解决原始问题。而等式成立的条件就是优化问题满足上述所说的KKT条件。&lt;/p&gt;
+">深入理解拉格朗日乘子法和KKT条件</a>
       </div>
       
       <div class="item">
@@ -1923,18 +2046,6 @@ theme: landscape&lt;/p&gt;
 &lt;p&gt;然后清除缓存，更新数据库发布，部署到仓库。（每次更新数据前必须清理缓存）&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;hexo clean &amp;amp;&amp;amp; g &amp;amp;&amp;amp; s hexo d&lt;/code&gt;&lt;/p&gt;
 ">使用HEXO构建个人博客</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://wenxc.github.io/post/about/"" data-c="
-          &lt;blockquote&gt;
-&lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;关于本站&#34;&gt;🏠 关于本站&lt;/h2&gt;
-&lt;h2 id=&#34;博主是谁&#34;&gt;👨‍💻 博主是谁&lt;/h2&gt;
-&lt;h2 id=&#34;兴趣爱好&#34;&gt;⛹ 兴趣爱好&lt;/h2&gt;
-&lt;h2 id=&#34;联系我呀&#34;&gt;📬 联系我呀&lt;/h2&gt;
-">关于</a>
       </div>
       
       <div class="item">

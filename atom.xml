@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wenxc.github.io/</id>
     <title>W-Blog</title>
-    <updated>2020-11-10T09:23:25.055Z</updated>
+    <updated>2020-11-23T02:36:23.443Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wenxc.github.io/"/>
     <link rel="self" href="https://wenxc.github.io/atom.xml"/>
@@ -255,6 +255,128 @@ src/stuff/submodule.py
 
 
 </code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[深入理解拉格朗日乘子法和KKT条件]]></title>
+        <id>https://wenxc.github.io/post/shen-ru-li-jie-la-ge-lang-ri-cheng-zi-fa-he-kkt-tiao-jian/</id>
+        <link href="https://wenxc.github.io/post/shen-ru-li-jie-la-ge-lang-ri-cheng-zi-fa-he-kkt-tiao-jian/">
+        </link>
+        <updated>2020-05-12T01:32:58.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>拉格朗日乘子法（Lagrange Multiplier) 和KKT条件是求取有约束条件的优化问题的非常常用而且重要的方法。之前学习的时候，只是直接应用两个方法，没有深入理解为什么要这样去求取最优值呢？在查找一些资料后，理解整理如下。</p>
+</blockquote>
+<h2 id="什么是拉格朗日乘子法和kkt条件">什么是拉格朗日乘子法和KKT条件</h2>
+<p>通常我们需要求解的最优化问题有如下几类：</p>
+<p>(i) 无约束优化问题，可以写为:</p>
+<p>​                                      min f(x);</p>
+<p>(ii) 有等式约束的优化问题，可以写为:</p>
+<p>​                                       min f(x),</p>
+<p>​                                       s.t. h<em>i</em>(x) = 0; i =1, ..., n</p>
+<p>(iii) 有不等式约束的优化问题，可以写为：</p>
+<p>​                                      min f(x),</p>
+<p>​                                      s.t. g<em>i</em>(x) &lt;= 0; i =1, ..., n</p>
+<p>​                                             h<em>j</em>(x) = 0; j =1, ..., m</p>
+<p>对于第(i)类的优化问题，常常使用的方法就是Fermat定理，即使用求取f(x)的导数，然后令其为零，可以求得候选最优值，再在这些候选值中验证；如果是凸函数，可以保证是最优解。</p>
+<p>对于第(ii)类的优化问题，常常使用的方法就是拉格朗日乘子法，即把等式约束h<em>i</em>(x)用一个系数与f(x)写为一个式子L(a, x) = f(x) + a*h(x)，称为拉格朗日函数，系数a称为拉格朗日乘子。通过拉格朗日函数对各个变量求导，令其为零，可以求得候选值集合，然后验证求得最优值。</p>
+<p>对于第(iii)类的优化问题，常常使用的方法就是KKT条件。同样地，把所有的等式、不等式约束与f(x)写为一个式子L(a, b, x)= f(x) + a<em>g(x)+b</em>h(x)，也叫拉格朗日函数，系数也称拉格朗日乘子。所谓KKT条件就是说优化问题求取的最优值必须满足以下条件：</p>
+<ul>
+<li>L(a, b, x)对x求导为零；</li>
+<li>h(x) =0;</li>
+<li>a*g(x) = 0;</li>
+</ul>
+<p>求取这三个等式之后能得到候选最优值。其中第三个式子非常有趣，因为g(x)&lt;=0，如果要满足这个等式，必须a=0或者g(x)=0. 这是SVM的很多重要性质的来源，如支持向量的概念。</p>
+<h2 id="为什么拉格朗日乘子法-和kkt条件能够得到最优值">为什么拉格朗日乘子法 和KKT条件能够得到最优值？</h2>
+<p>以维基百科给出的拉格朗日乘子法为例，假设目标函数z = f(x，y),  z取不同的值，则目标函数投影在xOy平面（曲面）上，即成为等高线，如下图，虚线是等高线。假设约束g(x，y)=0，在xOy平面或者曲面上是一条曲线，假设g(x，y)与等高线相交，交点就是同时满足等式约束条件和目标函数的可行域的值，但肯定不是最优值，因为相交意味着肯定还存在其它的等高线在该条等高线的内部或者外部，使得新的等高线与目标函数的交点的值更大或者更小，只有到等高线与目标函数的曲线相切的时候，可能取得最优值，即等高线和目标函数的曲线在该点的法向量必须在一条直线上，所以最优值必须满足：f(x，y)的梯度 = a* g(x，y)的梯度，a是常数，表示左右两边共线。这个等式就是L(a,x)对参数求导的结果。</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/11/23/8weFJpos1mOuYLE.jpg" alt="001.jpg" loading="lazy"></figure>
+<p>假设现在有不等式约束g ( x , y ) − c ≤ 0，五角星区域是我们满足不等式约束的区域。此时我们仍然用拉格朗日乘法将对不等式约束引入拉格朗日乘法。习惯上对等式约束使用β 乘子，对不等式约束使用α 乘子 L ( x , y , λ ) = f ( x , y ) + λ ⋅ ( g ( x , y ) − c ) 。<br>
+我们仍然按照三步求导的战略，仍旧可以得到：</p>
+<ul>
+<li>f ′ ( x ) = λ g ′ ( x )</li>
+<li>f ′ ( y ) = λ g ′ ( y ) g ( x , y ) − c = 0</li>
+<li><em>g</em>(<em>x</em>,<em>y</em>)−<em>c</em>=0</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/11/23/jvDyGgRdZNTVe5H.png" alt="002.png" loading="lazy"></figure>
+<p>但是这和等式约束有什么区别在于要想最小值点落在约束不等式所在的曲线上，那么原函数的梯度和约束曲线的梯度一定要是反方向的。<br>
+也就是</p>
+<ul>
+<li>f ′ ( x ) + λ g ′ ( x ) = 0</li>
+<li>f ′ ( y ) + λ g ′ ( y ) = 0</li>
+<li>s . t . λ ≥ 0</li>
+</ul>
+<p>也就是说如果最优解落在约束曲线上，除了原函数在该点的法向量能被约束曲线线性表出外，原函数的法向量的符号还得和约束曲线们的法向量符号相反，即切点约束条件区域扩大的方向与原函数增大的方向相同。</p>
+<p>这就引出<strong>KKT条件</strong>之大部分（除了条件d）：<br>
+∇ x L ( x ∗ , α ∗ , β ∗ ) = 0 ( a )</p>
+<p>∇ α L ( x ∗ , α ∗ , β ∗ ) = 0 ( b )</p>
+<p>∇ β L ( x ∗ , α ∗ , β ∗ ) = 0 ( c )</p>
+<p>α i ∗ c i ( x ∗ ) = 0 , i = 1 , 2 , ⋯  k ( d )</p>
+<p>c i ( x ∗ ) ≤ 0 , i = 1 , 2 , ⋯  k ( e )</p>
+<p>α i ∗ ≥ 0 , i = 1 , 2 , ⋯k ( f )</p>
+<p>h j ( x ∗ ) = 0 , j = 1 , 2 , ⋯  l ( g )</p>
+<ul>
+<li>条件(a)为原函数在切点的法向量被约束曲线在该点的法向量线性表出</li>
+<li>（b）(c） 表示最优解落在约束条件所在的曲线上</li>
+<li>（e）为约束条件的表达形式，都是小于等于的形式</li>
+<li>（f）使得原函数的法向量与约束曲线的法向量在切点处异号</li>
+<li>（g）为等式约束的形式</li>
+</ul>
+<p>而对于多个不等式约束：</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/11/23/ZVTlipqr8eoafkw.png" alt="003" loading="lazy"></figure>
+<p>由上图可知，<em>g</em>3函数在约束时没有起任何作用，但是在上面的KKT条件中<em>g</em>3和其对应λ 的系数都参与了运算，如何消除其作用呢，这就引出了KKT的最后一个条件d：<br>
+α i ∗ c i ( x ∗ ) = 0 , i = 1 , 2 , ⋯  k ( d )<br>
+最优解在约束曲线上时，其表达式为0，若不在某条约束曲线上，为了使最后的结果为0，其系数必须为0，从而使不产生作用的曲线在计算时不产生作用。<strong>该条件也称为KKT的对偶互补条件。</strong><br>
+到此为止我们推出了KKT的所有条件。</p>
+<h2 id="拉格朗日对偶性">拉格朗日对偶性</h2>
+<p>原始问题，求在等式和不等式约束条件下的函数最小值：</p>
+<p>​														<img src="https://i.loli.net/2020/11/23/5EH9rP3N2sUaz1F.png" alt="004" loading="lazy"></p>
+<p>为了求解原始问题，我们首先引入广义拉格朗日函数(generalized Lagrange function)：</p>
+<p>​									<img src="https://i.loli.net/2020/11/23/gRspnaLbdkGFu9f.png" alt="005.png" loading="lazy"></p>
+<p>其中：</p>
+<ul>
+<li>f ( x )是可微的</li>
+<li>α i , β j 成为拉格朗日乘子且α i ≥ 0</li>
+<li>c i ( x ) ≤ 0</li>
+<li>h i = 0</li>
+</ul>
+<p>通过拉格朗日乘法，把约束条件加上新的变量构成了一个新的函数，虽然新的函数中变量变多了，但是没有了限制条件。<br>
+考虑x的函数（下标P表示原始问题）：</p>
+<p>​																<img src="https://i.loli.net/2020/11/23/wbhSTUg2aPFK8Nn.png" alt="007" loading="lazy"></p>
+<p><strong>这个max的意义在于，我们将所有的x样本根据取值的不同分成了满足条件和不满足条件的两部分，用函数的取值代替了原来的约束条件</strong>。</p>
+<p>现在这个θ*<em>P*(<em>x</em></em>) 取最大，只要根据x的取值情况来调整其系数α <em>β</em> 即可。x的取值情况有两种：</p>
+<ul>
+<li>
+<p>满足原始问题的约束，这种情况下c i ( x ) ≤ 0 ,h j ( x ) = 0 ,并且α i ≥ 0 ，那我们只要让c i 的拉格朗日系数α为0，就能得到最大的结果f*(<em>x</em>)</p>
+</li>
+<li>
+<p>不满足原始问题的约束，这种情况下要么 c i ( x ) &gt; 0 或者h j ( x ) ≠ 0,那我们就能通过改变α β 使得 θ**P*(<em><strong>x</strong></em>)取到正无穷。</p>
+<p>所以我们就有如下的式子：<br>
+<img src="https://i.loli.net/2020/11/23/lYKgwJ2zyGvhMcq.png" alt="008" loading="lazy"></p>
+</li>
+</ul>
+<p>再考虑极小化问题：</p>
+<p>​														<img src="https://i.loli.net/2020/11/23/RZn8tjfSCB9FTH6.png" alt="009" loading="lazy"></p>
+<p>这个问题的解和原问题是等价的，即它和原始问题（带有约束条件的f(x)最小化问题）有着相同的解。因为对 θ P*(<em><strong>x</strong></em>)取最小值，就是对f*(*x)取最小值。</p>
+<p>如果我们定义原始问题的最优解为p ∗ ，那么我们也有<br>
+<em>p</em>∗=<em>x</em>min <em>θ**P</em>(<em>x</em>)<br>
+到这里，我们就将原来带有约束条件的极小化问题，变成了不带约束条件的极小极大问题。到这一步我们还是无法求解，所以我们引入对偶问题，将极小极大问题转化为极大极小问题。</p>
+<h2 id="对偶问题">对偶问题</h2>
+<p>定义：<br>
+<img src="https://i.loli.net/2020/11/23/qypsIkwaHPzj5VJ.png" alt="010.png" loading="lazy"><br>
+​																		<br>
+之前我们是先求极大值，再求极小值，先求极大值的好处是可以根据结果将数据分为满足条件和不满足条件的两部分，然后再对结果求最小，即变成了对满足条件的x求最小值还原了原始问题。</p>
+<p>现在我们反过来，先求极小值再求极大值，将该问题成为原始问题的对偶问题，定义对偶问题的最优值：</p>
+<p><em>d</em>∗=<em>α</em>,<em>β</em>max  <em>θ</em>D*(<em>α</em>,*β)</p>
+<p>原始问题先固定x，求最优化（极大化）的α β 的解，再确定x（通过极小化）<br>
+而对偶问题是先固定α ,β ，求最优化（极小化）的x的解，在确定α,β（通过极大化）</p>
+<h3 id="原始问题与对偶问题的关系">原始问题与对偶问题的关系</h3>
+<p>我将原始问题的最优解，转化为对偶问题的最优解，如果这两个解是等价的，那么解对偶问题最优解就是我们需要的原始问题的最优解。<br>
+若原始问题和对偶问题都有最优值，则：<br>
+<img src="https://i.loli.net/2020/11/23/BZjc7bJdxtOhpHi.png" alt="zuiyou.png" loading="lazy"><br>
+证明：<br>
+对于任意的x , α , β 有：</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2020/11/23/HJf1ad4CNWiOluB.png" alt="zuiyouzhengming.png" loading="lazy"></figure>
+<p>因为上述式子是在任意条件下的x , α , β，最大最小是任意条件中的特殊情况，所以上述结论得证。</p>
+<p>对偶问题的解小于等于原始问题的解 d ∗ ≤ p ∗ 。只有当等号成立的时候我们才能通过对偶问题来解决原始问题。而等式成立的条件就是优化问题满足上述所说的KKT条件。</p>
 ]]></content>
     </entry>
     <entry>
@@ -1456,38 +1578,6 @@ theme: landscape</p>
 </blockquote>
 <p>然后清除缓存，更新数据库发布，部署到仓库。（每次更新数据前必须清理缓存）</p>
 <p><code>hexo clean &amp;&amp; g &amp;&amp; s hexo d</code></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://wenxc.github.io/post/hello-gridea/</id>
-        <link href="https://wenxc.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>
