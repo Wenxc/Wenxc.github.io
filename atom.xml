@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wenxc.github.io/</id>
     <title>W-Blog</title>
-    <updated>2020-11-23T02:36:23.443Z</updated>
+    <updated>2020-11-23T02:51:46.836Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wenxc.github.io/"/>
     <link rel="self" href="https://wenxc.github.io/atom.xml"/>
@@ -17,9 +17,8 @@
         </link>
         <updated>2020-11-10T00:52:28.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
-<p>记录一下Colab的一些基础的问题及设置。距Colab开放已两年之久，配置时遇到一些与之前的教程不符的地方，进行了一些改进。主要参考https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d</p>
+<p>记录一下Colab的一些基础的问题及设置。距Colab开放已两年之久，配置时遇到一些与之前的教程不符的地方，进行了一些改进。主要参考资料[Google Colab Free GPU Tutorial](https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d ，在此基础上修改了一些有出入的地方，实测可行后整理如下。</p>
 </blockquote>
-<p>[TOC]</p>
 <h2 id="简介">简介</h2>
 <p>Colab（Colaboratory）是谷歌提供的一款基于Jupyter Notebook开发的免费深度学习云平台，尽管只是开放Notebook这样的交互式Python环境，依然可以通过魔法命令和shell命令执行Python脚本（使用和Jupyter Notebook一致，可以参照<a href="https://blog.csdn.net/zhouchen1998/article/details/100126865">Jupyter教程</a>）。同时，Colab配合谷歌其他的应用如Google Drive（谷歌云盘）等共同使用。它预装了几乎所有主流的机器学习和深度学习框架以及常用的工具库，深度学习框架以TensorFlow为主，其他框架需要自行安装。</p>
 <h2 id="启动方式">启动方式</h2>
@@ -77,7 +76,7 @@ print(torch.__version__)
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[pathlib 使用教程]]></title>
+        <title type="html"><![CDATA[pathlib 库中Path使用教程]]></title>
         <id>https://wenxc.github.io/post/pathlib-shi-yong-jiao-cheng/</id>
         <link href="https://wenxc.github.io/post/pathlib-shi-yong-jiao-cheng/">
         </link>
@@ -650,7 +649,11 @@ print(list(filter(not_empty, list2)))
         <link href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/">
         </link>
         <updated>2019-10-03T14:01:58.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="抽象数据类型">抽象数据类型</h3>
+        <content type="html"><![CDATA[<blockquote>
+<p>学习记录，监督自己学习，持续更新中</p>
+</blockquote>
+<!---more--->
+<h3 id="抽象数据类型">抽象数据类型</h3>
 <p>1、抽象数据类型概念</p>
 <p>c语言中数据类型可以分为两类：</p>
 <ul>
@@ -658,7 +661,6 @@ print(list(filter(not_empty, list2)))
 <li>结构类型:  由若干个类型组合而成，是可以再分解的，例如整型数组是由若干个整型数据组成的。</li>
 </ul>
 <p>抽象是指抽取事物具有的普遍性的本质。对已有的数据类型进行抽象就有了抽象数据类型。</p>
-<!---more--->
 <p>抽象数据类型（abstract  data type, ADT）是指一个数学模型及定义在该模型上的一组操作。“抽象”的意义在于数据类型的数学抽象特性，而且抽象数据类型不仅仅指那些已经定义并实现的数据类型，还可以是计算机编程者在设计软件程序时自己定义的数据类型。</p>
 <p>2、抽象数据类型格式</p>
 <p>标准格式：</p>
