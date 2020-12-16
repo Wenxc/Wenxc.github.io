@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://wenxc.github.io/</id>
+    <id>https://wenxc.xyz</id>
     <title>Wlog</title>
-    <updated>2020-12-02T07:29:34.286Z</updated>
+    <updated>2020-12-16T01:33:16.402Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://wenxc.github.io/"/>
-    <link rel="self" href="https://wenxc.github.io/atom.xml"/>
+    <link rel="alternate" href="https://wenxc.xyz"/>
+    <link rel="self" href="https://wenxc.xyz/atom.xml"/>
     <subtitle>QuickNote</subtitle>
-    <logo>https://wenxc.github.io/images/avatar.png</logo>
-    <icon>https://wenxc.github.io/favicon.ico</icon>
+    <logo>https://wenxc.xyz/images/avatar.png</logo>
+    <icon>https://wenxc.xyz/favicon.ico</icon>
     <rights>All rights reserved 2020, Wlog</rights>
     <entry>
         <title type="html"><![CDATA[Colab入门]]></title>
-        <id>https://wenxc.github.io/post/colab-ru-men/</id>
-        <link href="https://wenxc.github.io/post/colab-ru-men/">
+        <id>https://wenxc.xyz/post/colab-ru-men/</id>
+        <link href="https://wenxc.xyz/post/colab-ru-men/">
         </link>
         <updated>2020-11-10T00:52:28.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -77,8 +77,8 @@ print(torch.__version__)
     </entry>
     <entry>
         <title type="html"><![CDATA[pathlib 库中Path使用教程]]></title>
-        <id>https://wenxc.github.io/post/pathlib-shi-yong-jiao-cheng/</id>
-        <link href="https://wenxc.github.io/post/pathlib-shi-yong-jiao-cheng/">
+        <id>https://wenxc.xyz/post/pathlib-shi-yong-jiao-cheng/</id>
+        <link href="https://wenxc.xyz/post/pathlib-shi-yong-jiao-cheng/">
         </link>
         <updated>2020-09-15T00:43:12.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -258,8 +258,8 @@ src/stuff/submodule.py
     </entry>
     <entry>
         <title type="html"><![CDATA[深入理解拉格朗日乘子法和KKT条件]]></title>
-        <id>https://wenxc.github.io/post/shen-ru-li-jie-la-ge-lang-ri-cheng-zi-fa-he-kkt-tiao-jian/</id>
-        <link href="https://wenxc.github.io/post/shen-ru-li-jie-la-ge-lang-ri-cheng-zi-fa-he-kkt-tiao-jian/">
+        <id>https://wenxc.xyz/post/shen-ru-li-jie-la-ge-lang-ri-cheng-zi-fa-he-kkt-tiao-jian/</id>
+        <link href="https://wenxc.xyz/post/shen-ru-li-jie-la-ge-lang-ri-cheng-zi-fa-he-kkt-tiao-jian/">
         </link>
         <updated>2020-05-12T01:32:58.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -380,8 +380,8 @@ src/stuff/submodule.py
     </entry>
     <entry>
         <title type="html"><![CDATA[OpenCV图片操作]]></title>
-        <id>https://wenxc.github.io/post/opencv-tu-pian-cao-zuo/</id>
-        <link href="https://wenxc.github.io/post/opencv-tu-pian-cao-zuo/">
+        <id>https://wenxc.xyz/post/opencv-tu-pian-cao-zuo/</id>
+        <link href="https://wenxc.xyz/post/opencv-tu-pian-cao-zuo/">
         </link>
         <updated>2020-01-15T00:36:51.000Z</updated>
         <summary type="html"><![CDATA[<p>记录OpenCV读取和显示图片的一些基本操作，适合新手入门</p>
@@ -578,8 +578,8 @@ if cv2.waitKey(0) == 27:
     </entry>
     <entry>
         <title type="html"><![CDATA[字符串操作]]></title>
-        <id>https://wenxc.github.io/post/zi-fu-chuan-cao-zuo/</id>
-        <link href="https://wenxc.github.io/post/zi-fu-chuan-cao-zuo/">
+        <id>https://wenxc.xyz/post/zi-fu-chuan-cao-zuo/</id>
+        <link href="https://wenxc.xyz/post/zi-fu-chuan-cao-zuo/">
         </link>
         <updated>2019-11-12T00:21:28.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -645,8 +645,8 @@ print(list(filter(not_empty, list2)))
     </entry>
     <entry>
         <title type="html"><![CDATA[数据结构学习笔记]]></title>
-        <id>https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/</id>
-        <link href="https://wenxc.github.io/post/shu-ju-jie-gou-xue-xi-bi-ji/">
+        <id>https://wenxc.xyz/post/shu-ju-jie-gou-xue-xi-bi-ji/</id>
+        <link href="https://wenxc.xyz/post/shu-ju-jie-gou-xue-xi-bi-ji/">
         </link>
         <updated>2019-10-03T14:01:58.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -680,8 +680,8 @@ print(list(filter(not_empty, list2)))
     </entry>
     <entry>
         <title type="html"><![CDATA[Python调用动态链接库DLL学习笔记]]></title>
-        <id>https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/</id>
-        <link href="https://wenxc.github.io/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">
+        <id>https://wenxc.xyz/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/</id>
+        <link href="https://wenxc.xyz/post/python-diao-yong-dong-tai-lian-jie-ku-dll-xue-xi-bi-ji/">
         </link>
         <updated>2019-09-09T14:05:51.000Z</updated>
         <content type="html"><![CDATA[<h4 id="python调用动态链接库dll">Python调用动态链接库DLL</h4>
@@ -1074,8 +1074,8 @@ CreateProcess(fileName, 0, 0, 0, 0, NORMAL_PRIORITY_CLASS,0, 0, byref(StartupInf
     </entry>
     <entry>
         <title type="html"><![CDATA[Hexo博客使用经验]]></title>
-        <id>https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/</id>
-        <link href="https://wenxc.github.io/post/hexo-bo-ke-shi-yong-jing-yan/">
+        <id>https://wenxc.xyz/post/hexo-bo-ke-shi-yong-jing-yan/</id>
+        <link href="https://wenxc.xyz/post/hexo-bo-ke-shi-yong-jing-yan/">
         </link>
         <updated>2019-09-03T13:53:01.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -1124,8 +1124,8 @@ CreateProcess(fileName, 0, 0, 0, 0, NORMAL_PRIORITY_CLASS,0, 0, byref(StartupInf
     </entry>
     <entry>
         <title type="html"><![CDATA[Python第三方库制作]]></title>
-        <id>https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/</id>
-        <link href="https://wenxc.github.io/post/python-di-san-fang-ku-zhi-zuo/">
+        <id>https://wenxc.xyz/post/python-di-san-fang-ku-zhi-zuo/</id>
+        <link href="https://wenxc.xyz/post/python-di-san-fang-ku-zhi-zuo/">
         </link>
         <updated>2019-08-20T10:25:15.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -1478,8 +1478,8 @@ NameError: name '_private_teacher' is not defined
     </entry>
     <entry>
         <title type="html"><![CDATA[使用HEXO构建个人博客]]></title>
-        <id>https://wenxc.github.io/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/</id>
-        <link href="https://wenxc.github.io/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/">
+        <id>https://wenxc.xyz/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/</id>
+        <link href="https://wenxc.xyz/post/shi-yong-hexo-gou-jian-ge-ren-bo-ke/">
         </link>
         <updated>2019-08-01T13:58:45.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
