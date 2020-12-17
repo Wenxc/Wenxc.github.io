@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wenxc.xyz</id>
-    <title>Blog</title>
-    <updated>2020-12-17T07:44:14.002Z</updated>
+    <title>Wenxc&apos; blog</title>
+    <updated>2020-12-17T08:41:36.392Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wenxc.xyz"/>
     <link rel="self" href="https://wenxc.xyz/atom.xml"/>
     <subtitle>QuickNote</subtitle>
     <logo>https://wenxc.xyz/images/avatar.png</logo>
     <icon>https://wenxc.xyz/favicon.ico</icon>
-    <rights>All rights reserved 2020, Blog</rights>
+    <rights>All rights reserved 2020, Wenxc&apos; blog</rights>
     <entry>
         <title type="html"><![CDATA[Colab入门]]></title>
         <id>https://wenxc.xyz/post/colab-ru-men/</id>
